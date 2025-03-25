@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste Unnichat - Formulário de Respostas</title>
     <style>
-        :root {
+        :root { 
             --primary-color: #25D366;
             --secondary-color: #128C7E;
             --text-color: #333;
@@ -194,7 +194,7 @@
         <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png" alt="Painel Unnichat" class="header-image">
         
         <header>
-            <h1><span class="emoji">�</span> Teste Unnichat - Formulário de Respostas</h1>
+            <h1><span class="emoji">�</span>Teste Unnichat - Formulário de Respostas</h1>
             <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat! Então, parabéns!</p>
             <p class="intro-text">Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.</p>
             <p class="intro-text">O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.</p>
