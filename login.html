@@ -1,0 +1,12 @@
+<input type="password" id="senha" placeholder="Digite a senha">
+<button onclick="verificarSenha()">Entrar</button>
+
+<script>
+  function verificarSenha() {
+    if (document.getElementById("senha").value === "testeswebrh") {
+      window.location.href = "index.html"; // Redireciona para a página principal
+    } else {
+      alert("Senha incorreta!");
+    }
+  }
+</script>
