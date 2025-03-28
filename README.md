@@ -374,18 +374,18 @@
                         
                         <div class="form-group question">
                             <label for="candidatePhone" class="required-field">Telefone:</label>
-                            <input type="tel" id="candidatePhone" name="candidatePhone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required placeholder="Formato: 00-00000-0000">
+                            <input type="tel" id="candidatePhone" name="candidatePhone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required placeholder="Digite direto 😁">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group question">
                             <label for="candidateEmail" class="required-field">E-mail:</label>
-                            <input type="email" id="candidateEmail" name="candidateEmail" required placeholder="Digite seu e-mail">
+                            <input type="email" id="candidateEmail" name="candidateEmail" required placeholder="Seu e-mail 😌">
                         </div>
                         
                         <div class="form-group question">
-                            <label for="jobTitle" class="required-field">Nome da vaga pretendida:</label>
+                            <label for="jobTitle" class="required-field">Nome da vaga pretendida: ✌🏽</label>
                             <input type="text" id="jobTitle" name="jobTitle" maxlength="30" required placeholder="Digite o nome da vaga (máx. 30 caracteres)">
                         </div>
                     </div>
@@ -393,7 +393,7 @@
                     <div class="form-row">
                         <div class="form-group question">
                             <label for="jobCode">Código da Vaga (opcional):</label>
-                            <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver">
+                            <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver" 🤙🏾>
                         </div>
                     </div>
                 </div>
