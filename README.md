@@ -7,7 +7,7 @@
     <meta name="MobileOptimized" content="width">
     <meta name="theme-color" content="#128C7E">
     <meta name="format-detection" content="telephone=no">
-    <title>Formulário Question::Unnichat SendFlow </title>
+    <title>Formulário Question:Unnichat SendFlow </title>
     <style>
         :root {
             --primary-color: #25D366;
