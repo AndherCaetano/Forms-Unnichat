@@ -310,13 +310,14 @@
                 font-size: 16px !important;
             }
 
- body {
+    body {
             margin: 0;
             padding: 20px;
             font-family: Arial, sans-serif;
         }
- .intro-text {
+     .intro-text {
             text-align: justify;
+            margin-bottom: 15px;
         }
 
         }
