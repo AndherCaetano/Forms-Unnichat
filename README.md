@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Candidatura Unnichat</title>
+    <title>Teste prático de habilidades -  Unnichat</title>
     <style>
         :root {
             --primary-color: #25D366;
@@ -236,7 +236,7 @@
         
         <header>
             <h1><span class="emoji">📝</span> Formulário de Candidatura</h1>
-            <p class="intro-text">Preencha o formulário abaixo para se candidatar à vaga na Unnichat. Todos os campos são obrigatórios, exceto quando indicado.</p>
+            <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p>
         </header>
 
         <form id="candidateForm">
@@ -271,7 +271,7 @@
                 <div class="form-row">
                     <div class="form-group question">
                         <label for="jobCode">Código da Vaga (opcional):</label>
-                        <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se souber">
+                        <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver">
                     </div>
                 </div>
             </div>
