@@ -112,6 +112,9 @@
         
         .question {
             margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alinha perguntas à esquerda */
         }
         
         .question label {
@@ -119,6 +122,8 @@
             font-weight: 500;
             margin-bottom: 6px;
             font-size: clamp(0.9rem, 3vw, 1rem);
+            text-align: left; /* Alinha texto da pergunta à esquerda */
+            width: 100%;
         }
         
         .required-field::after {
@@ -573,7 +578,7 @@
             
             doc.setFontSize(18);
             doc.setTextColor(18, 140, 126);
-            doc.text('Formulário de Candidatura Unnichat', 105, yPosition, { align: 'center' });
+            doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' }); // Título alterado
             yPosition += 15;
             
             doc.setFontSize(12);
@@ -775,7 +780,7 @@
             window.open(pdfUrl, '_blank');
             
             // Criar corpo do e-mail
-            let emailBody = `Formulário de Questões Unnichat\n\n`;
+            let emailBody = `Formulário de Questões Unnichat-SendFlow\n\n`; // Título alterado
             emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
             emailBody += `Candidato: ${candidateName}\n`;
             emailBody += `Telefone: ${candidatePhone}\n`;
@@ -873,7 +878,7 @@
             const p3d = document.getElementById('p3d').value;
             
             // Criar mensagem para WhatsApp com formatação melhorada
-            let whatsappMessage = `*FORMULÁRIO DE QUESTÕES UNNICHAT*\n\n`;
+            let whatsappMessage = `*FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW*\n\n`; // Título alterado
             whatsappMessage += `*Enviado em:* ${getFormattedDateTime()}\n\n`;
             whatsappMessage += `*INFORMAÇÕES DO CANDIDATO*\n`;
             whatsappMessage += `• *Nome:* ${candidateName}\n`;
@@ -922,4 +927,3 @@
     </script>
 </body>
 </html>
-
