@@ -1,14 +1,16 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="width">
     <meta name="theme-color" content="#128C7E">
     <meta name="format-detection" content="telephone=no">
-    <title>Form Question:Unnichat SendFlow </title>
+    <title>Formulário Unnichat SendFlow</title>
+    
     <style>
+        /* ===== VARIÁVEIS E RESET ===== */
         :root {
             --primary-color: #25D366;
             --secondary-color: #128C7E;
@@ -29,13 +31,14 @@
             -webkit-tap-highlight-color: transparent;
         }
         
+        /* ===== ESTILOS GERAIS ===== */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
                          Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             line-height: 1.5;
             color: var(--text-color);
             background-color: var(--light-gray);
-            padding: 0;
+            padding: 20px;
             margin: 0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -46,36 +49,38 @@
             width: 100%;
             max-width: 100%;
             min-height: 100vh;
-            padding: 0;
             margin: 0 auto;
             background: var(--white);
             overflow-x: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .content-wrapper {
-            padding: 12px;
+            padding: 20px;
             max-width: 900px;
             margin: 0 auto;
         }
         
+        /* ===== CABEÇALHO E TIPOGRAFIA ===== */
         .logo {
             max-height: 60px;
             width: auto;
             height: auto;
-            margin: 12px auto;
+            margin: 0 auto 20px;
             display: block;
         }
         
         header {
             text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 1px solid var(--medium-gray);
         }
         
         h1 {
             color: var(--secondary-color);
-            margin: 10px 0;
+            margin: 15px 0;
             font-size: clamp(1.4rem, 5vw, 1.8rem);
             font-weight: 600;
             line-height: 1.3;
@@ -83,46 +88,50 @@
         
         h2 {
             color: var(--secondary-color);
-            margin: 20px 0 12px;
-            padding-bottom: 5px;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid var(--medium-gray);
             font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 600;
         }
         
         h3 {
-            margin: 15px 0 8px;
+            margin: 18px 0 10px;
             color: var(--secondary-color);
             font-size: clamp(1.1rem, 3.5vw, 1.3rem);
         }
         
         .intro-text {
-            margin-bottom: 15px;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            line-height: 1.5;
+            text-align: justify;
+            margin-bottom: 18px;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            line-height: 1.6;
             color: var(--dark-gray);
+            hyphens: auto;
+            text-justify: inter-word;
         }
         
+        /* ===== SEÇÕES E FORMULÁRIO ===== */
         .part {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
             background-color: var(--light-gray);
             border-radius: 8px;
         }
         
         .question {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Alinha perguntas à esquerda */
+            align-items: flex-start;
         }
         
         .question label {
             display: block;
             font-weight: 500;
-            margin-bottom: 6px;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            text-align: left; /* Alinha texto da pergunta à esquerda */
+            margin-bottom: 8px;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            text-align: left;
             width: 100%;
         }
         
@@ -136,19 +145,19 @@
         .question input[type="tel"],
         .question textarea {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border: 1px solid var(--medium-gray);
             border-radius: 6px;
-            font-size: clamp(0.9rem, 3vw, 1rem);
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
             background-color: var(--white);
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .question textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
         }
         
@@ -156,14 +165,14 @@
         .question textarea:focus {
             outline: none;
             border-color: var(--secondary-color);
-            box-shadow: 0 0 0 2px rgba(18, 140, 126, 0.2);
+            box-shadow: 0 0 0 3px rgba(18, 140, 126, 0.15);
         }
         
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
         
         .form-group {
@@ -171,20 +180,21 @@
             min-width: 0;
         }
         
+        /* ===== BOTÕES ===== */
         .buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 25px;
+            gap: 15px;
+            margin-top: 30px;
         }
         
         button {
             flex: 1 1 100%;
-            padding: 14px 20px;
+            padding: 15px 25px;
             border: none;
             border-radius: 6px;
             font-weight: 600;
-            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            font-size: clamp(1rem, 3vw, 1.1rem);
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -201,11 +211,16 @@
             color: var(--white);
         }
         
-        button:active, button:focus {
+        button:hover {
             opacity: 0.9;
-            transform: translateY(1px);
+            transform: translateY(-2px);
         }
         
+        button:active {
+            transform: translateY(0);
+        }
+        
+        /* ===== ELEMENTOS ESPECIAIS ===== */
         .emoji {
             font-size: 1.1em;
             margin-right: 5px;
@@ -213,20 +228,21 @@
         
         .candidate-info {
             background-color: #f0f8ff;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .screen-image {
             width: 100%;
             max-width: 100%;
-            margin: 10px auto;
+            margin: 15px auto;
             display: block;
             border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
+        /* ===== MODAL ===== */
         .modal {
             position: fixed;
             top: 0;
@@ -251,102 +267,99 @@
         
         .modal-content {
             background-color: var(--white);
-            padding: 25px;
+            padding: 30px;
             border-radius: 10px;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
         
         .modal-content p {
             margin-bottom: 20px;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            line-height: 1.5;
+            font-size: clamp(1.05rem, 3vw, 1.15rem);
+            line-height: 1.6;
         }
         
         .modal-close {
             background-color: var(--secondary-color);
             color: var(--white);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
-            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            transition: all 0.3s ease;
         }
         
-        @media (max-width: 360px) {
-            .content-wrapper {
+        .modal-close:hover {
+            opacity: 0.9;
+        }
+        
+        /* ===== MEDIA QUERIES ===== */
+        @media (max-width: 480px) {
+            body {
                 padding: 10px;
             }
             
+            .content-wrapper {
+                padding: 15px;
+            }
+            
             .part {
-                padding: 12px;
+                padding: 15px;
             }
             
             .question input,
             .question textarea {
-                padding: 10px;
+                padding: 10px 12px;
             }
         }
         
         @media (min-width: 600px) {
-            .content-wrapper {
-                padding: 20px;
-            }
-            
             .form-group {
-                flex: 1 1 calc(50% - 12px);
+                flex: 1 1 calc(50% - 15px);
             }
             
             button {
-                flex: 1 1 calc(50% - 12px);
+                flex: 1 1 calc(50% - 15px);
             }
         }
         
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 30px;
+            }
+        }
+        
+        /* Correção para iOS */
         @supports (-webkit-touch-callout: none) {
-            input, textarea {
+            input, 
+            textarea,
+            select {
                 font-size: 16px !important;
             }
-
-    body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-    .intro-text {
-    text-align: justify;
-    margin-bottom: 15px;
-    width: 100%; /* ou um valor específico como 600px */
-    max-width: 800px; /* ajuste conforme necessário */
-    hyphens: auto;
-   
-}
-
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="content-wrapper">
-            <!-- Logotipo da empresa -->
+            <!-- Logotipo -->
             <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png" alt="Unnichat Logo" class="logo">
             
             <header>
-                <h1><span class="emoji">📝</span> Questions:Unnichat-SendFlow</h1>
-             <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat!<br>
-    Então, parabéns! 🥳<br>
-    Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.
-</p>
-<p class="intro-text">
-    O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.<br>
-    <strong>ORIENTAÇÕES PARA RESPOSTA:</strong><br>
-    Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviada para você.
-</p>
-<p class="intro-text">
-    Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.
-</p>
+                <h1><span class="emoji">📝</span> Formulário Unnichat SendFlow</h1>
+                
+                <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat! Então, parabéns! 🥳 Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.</p>
+                
+                <p class="intro-text">O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.</p>
+                
+                <p class="intro-text"><strong>ORIENTAÇÕES PARA RESPOSTA:</strong> Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviada para você.</p>
+                
+                <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p>
+            </header>
 
             <form id="candidateForm">
                 <!-- Seção de informações do candidato -->
@@ -385,9 +398,10 @@
                     </div>
                 </div>
 
+                <!-- Parte 1 - Comportamental -->
                 <div class="part">
                     <h2>PARTE 1 - Comportamental</h2>
-                    <p>Considere o seguinte cenário: Você presta suporte para uma ferramenta de automação de WhatsApp.</p>
+                    <p class="intro-text">Considere o seguinte cenário: Você presta suporte para uma ferramenta de automação de WhatsApp.</p>
                     
                     <div class="question">
                         <label for="p1a" class="required-field">a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?</label>
@@ -420,11 +434,11 @@
                     </div>
                 </div>
                 
+                <!-- Parte 2 - Conhecimento do Produto -->
                 <div class="part">
                     <h2>PARTE 2 - Conhecimento do Produto</h2>
-                    <p>Observe essa tela:</p>
+                    <p class="intro-text">Observe essa tela:</p>
                     
-                    <!-- Imagem da tela centralizada -->
                     <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.10.17.png" alt="Tela do Unnichat" class="screen-image">
                     
                     <div class="question">
@@ -458,9 +472,10 @@
                     </div>
                 </div>
                 
+                <!-- Parte 3 - Conhecimentos Específicos -->
                 <div class="part">
                     <h2>PARTE 3 - Conhecimentos Específicos</h2>
-                    <p>Agora, teremos perguntas nichadas. Se você não souber a resposta, não se preocupe, não é uma etapa eliminatória (mas você pode tentar responder também).</p>
+                    <p class="intro-text">Agora, teremos perguntas nichadas. Se você não souber a resposta, não se preocupe, não é uma etapa eliminatória (mas você pode tentar responder também).</p>
                     
                     <div class="question">
                         <label for="p3a" class="required-field">a. O que é API Oficial do WhatsApp?</label>
@@ -483,6 +498,7 @@
                     </div>
                 </div>
                 
+                <!-- Botões de envio -->
                 <div class="buttons">
                     <button type="button" class="btn-email" id="sendEmail">
                         <span class="emoji">📧</span> Enviar por E-mail
@@ -499,11 +515,12 @@
     <div id="confirmationModal" class="modal">
         <div class="modal-content">
             <p>Suas respostas foram enviadas com sucesso!</p>
-            <p>Aguarde o nosso retorno o mais breve possível, Unnichat SendFlow, agradece, obrigado!</p>
+            <p>Aguarde o nosso retorno o mais breve possível, Unnichat SendFlow agradece, obrigado!</p>
             <button class="modal-close" onclick="closeModal()">OK</button>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
@@ -528,7 +545,7 @@
         function getFormattedDateTime() {
             const now = new Date();
             const date = now.toLocaleDateString('pt-BR');
-            const time = now.toLocaleTimeString('pt-BR');
+            const time = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
             return `${date} às ${time}`;
         }
         
@@ -544,8 +561,8 @@
             e.target.value = value;
         });
         
-        document.getElementById('sendEmail').addEventListener('click', function() {
-            // Validar formulário
+        // Validação de formulário genérica
+        function validateForm() {
             const form = document.getElementById('candidateForm');
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
@@ -553,7 +570,8 @@
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     isValid = false;
-                    field.style.borderColor = 'red';
+                    field.style.borderColor = 'var(--error-color)';
+                    field.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
                     field.style.borderColor = '';
                 }
@@ -564,7 +582,8 @@
             const phoneRegex = /^\d{2}-\d{5}-\d{4}$/;
             if (!phoneRegex.test(phoneField.value)) {
                 isValid = false;
-                phoneField.style.borderColor = 'red';
+                phoneField.style.borderColor = 'var(--error-color)';
+                phoneField.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 alert('Por favor, insira um telefone no formato 00-00000-0000');
             }
             
@@ -573,16 +592,20 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(emailField.value)) {
                 isValid = false;
-                emailField.style.borderColor = 'red';
+                emailField.style.borderColor = 'var(--error-color)';
+                emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 alert('Por favor, insira um e-mail válido');
             }
             
             if (!isValid) {
                 alert('Por favor, preencha todos os campos obrigatórios corretamente antes de enviar.');
-                return;
             }
             
-            // Criar PDF
+            return isValid;
+        }
+        
+        // Função para criar o PDF
+        function createPDF() {
             const doc = new jsPDF();
             
             // Configurações de margem
@@ -603,7 +626,7 @@
             
             doc.setFontSize(18);
             doc.setTextColor(18, 140, 126);
-            doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' }); // Título alterado
+            doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' });
             yPosition += 15;
             
             doc.setFontSize(12);
@@ -620,27 +643,21 @@
             doc.setFontSize(11);
             doc.setTextColor(0, 0, 0);
             
-            const candidateName = document.getElementById('candidateName').value;
-            doc.text('Nome: ' + candidateName, marginLeft, yPosition);
-            yPosition += 7;
+            const fields = [
+                { id: 'candidateName', label: 'Nome: ' },
+                { id: 'candidatePhone', label: 'Telefone: ' },
+                { id: 'candidateEmail', label: 'E-mail: ' },
+                { id: 'jobTitle', label: 'Vaga Pretendida: ' },
+                { id: 'jobCode', label: 'Código da Vaga: ', optional: true }
+            ];
             
-            const candidatePhone = document.getElementById('candidatePhone').value;
-            doc.text('Telefone: ' + candidatePhone, marginLeft, yPosition);
-            yPosition += 7;
-            
-            const candidateEmail = document.getElementById('candidateEmail').value;
-            doc.text('E-mail: ' + candidateEmail, marginLeft, yPosition);
-            yPosition += 7;
-            
-            const jobTitle = document.getElementById('jobTitle').value;
-            doc.text('Vaga Pretendida: ' + jobTitle, marginLeft, yPosition);
-            yPosition += 7;
-            
-            const jobCode = document.getElementById('jobCode').value;
-            if (jobCode) {
-                doc.text('Código da Vaga: ' + jobCode, marginLeft, yPosition);
-                yPosition += 7;
-            }
+            fields.forEach(field => {
+                const value = document.getElementById(field.id).value;
+                if (!field.optional || value) {
+                    doc.text(field.label + value, marginLeft, yPosition);
+                    yPosition += 7;
+                }
+            });
             
             yPosition += 10;
             
@@ -658,223 +675,163 @@
                 return y;
             }
             
-            // Adicionar respostas
-            doc.setFontSize(14);
-            doc.setTextColor(18, 140, 126);
-            yPosition = addTextWithBreaks('PARTE 1 - COMPORTAMENTAL', marginLeft, yPosition, maxWidth, 10);
+            // Adicionar respostas das partes 1, 2 e 3
+            const parts = [
+                { 
+                    title: 'PARTE 1 - COMPORTAMENTAL',
+                    questions: [
+                        { id: 'p1a', text: 'a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?' },
+                        { id: 'p1b', text: 'b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?' },
+                        { id: 'p1c', text: 'c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?' },
+                        { id: 'p1d', text: 'd. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?' },
+                        { id: 'p1e1', text: '1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta' },
+                        { id: 'p1e2', text: '2. Monte um Roteiro de atendimento para Suporte técnico' }
+                    ]
+                },
+                {
+                    title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
+                    questions: [
+                        { id: 'p2a', text: 'a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?' },
+                        { id: 'p2b', text: 'b. Onde o cliente aperta para efetuar disparos em massa para os clientes?' },
+                        { id: 'p2c', text: 'c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?' },
+                        { id: 'p2d', text: 'd. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?' },
+                        { id: 'p2e', text: 'e. Onde você iria para entender mais sobre o Unnichat?' },
+                        { id: 'p2f', text: 'f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?' }
+                    ]
+                },
+                {
+                    title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
+                    questions: [
+                        { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
+                        { id: 'p3b', text: 'b. Qual o custo médio de envio da API?' },
+                        { id: 'p3c', text: 'c. Qualquer pessoa pode ter uma conta API Oficial?' },
+                        { id: 'p3d', text: 'd. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.' }
+                    ]
+                }
+            ];
             
-            doc.setFontSize(11);
-            doc.setTextColor(0, 0, 0);
-            
-            // Parte 1
-            const p1a = document.getElementById('p1a').value;
-            yPosition = addTextWithBreaks('a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p1a, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p1b = document.getElementById('p1b').value;
-            yPosition = addTextWithBreaks('b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p1b, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p1c = document.getElementById('p1c').value;
-            yPosition = addTextWithBreaks('c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p1c, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p1d = document.getElementById('p1d').value;
-            yPosition = addTextWithBreaks('d. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p1d, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p1e1 = document.getElementById('p1e1').value;
-            yPosition = addTextWithBreaks('1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p1e1, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p1e2 = document.getElementById('p1e2').value;
-            yPosition = addTextWithBreaks('2. Monte um Roteiro de atendimento para Suporte técnico', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p1e2, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 10;
-            
-            // Parte 2
-            doc.setFontSize(14);
-            doc.setTextColor(18, 140, 126);
-            yPosition = addTextWithBreaks('PARTE 2 - CONHECIMENTO DO PRODUTO', marginLeft, yPosition, maxWidth, 10);
-            
-            doc.setFontSize(11);
-            doc.setTextColor(0, 0, 0);
-            
-            const p2a = document.getElementById('p2a').value;
-            yPosition = addTextWithBreaks('a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p2a, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p2b = document.getElementById('p2b').value;
-            yPosition = addTextWithBreaks('b. Onde o cliente aperta para efetuar disparos em massa para os clientes?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p2b, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p2c = document.getElementById('p2c').value;
-            yPosition = addTextWithBreaks('c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p2c, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p2d = document.getElementById('p2d').value;
-            yPosition = addTextWithBreaks('d. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p2d, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p2e = document.getElementById('p2e').value;
-            yPosition = addTextWithBreaks('e. Onde você iria para entender mais sobre o Unnichat?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p2e, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p2f = document.getElementById('p2f').value;
-            yPosition = addTextWithBreaks('f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p2f, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 10;
-            
-            // Parte 3
-            doc.setFontSize(14);
-            doc.setTextColor(18, 140, 126);
-            yPosition = addTextWithBreaks('PARTE 3 - CONHECIMENTOS ESPECÍFICOS', marginLeft, yPosition, maxWidth, 10);
-            
-            doc.setFontSize(11);
-            doc.setTextColor(0, 0, 0);
-            
-            const p3a = document.getElementById('p3a').value;
-            yPosition = addTextWithBreaks('a. O que é API Oficial do WhatsApp?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p3a, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p3b = document.getElementById('p3b').value;
-            yPosition = addTextWithBreaks('b. Qual o custo médio de envio da API?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p3b, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p3c = document.getElementById('p3c').value;
-            yPosition = addTextWithBreaks('c. Qualquer pessoa pode ter uma conta API Oficial?', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p3c, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
-            yPosition += 5;
-            
-            const p3d = document.getElementById('p3d').value;
-            yPosition = addTextWithBreaks('d. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.', marginLeft, yPosition, maxWidth, 7);
-            doc.setTextColor(0, 0, 255);
-            yPosition = addTextWithBreaks(p3d, marginLeft + 5, yPosition, maxWidth - 5, 7);
-            doc.setTextColor(0, 0, 0);
+            parts.forEach(part => {
+                doc.setFontSize(14);
+                doc.setTextColor(18, 140, 126);
+                yPosition = addTextWithBreaks(part.title, marginLeft, yPosition, maxWidth, 10);
+                
+                doc.setFontSize(11);
+                doc.setTextColor(0, 0, 0);
+                
+                part.questions.forEach(question => {
+                    const answer = document.getElementById(question.id).value;
+                    yPosition = addTextWithBreaks(question.text, marginLeft, yPosition, maxWidth, 7);
+                    doc.setTextColor(0, 0, 255);
+                    yPosition = addTextWithBreaks(answer, marginLeft + 5, yPosition, maxWidth - 5, 7);
+                    doc.setTextColor(0, 0, 0);
+                    yPosition += 5;
+                });
+                
+                yPosition += 10;
+            });
             
             // Adicionar rodapé com data e hora
             doc.setFontSize(10);
             doc.setTextColor(100, 100, 100);
             doc.text('Enviado em: ' + getFormattedDateTime(), marginLeft, 290, { align: 'left' });
             
-            // Salvar PDF em nova aba
+            return doc;
+        }
+        
+        // Função para criar corpo do e-mail
+        function createEmailBody() {
+            const candidateName = document.getElementById('candidateName').value;
+            const candidatePhone = document.getElementById('candidatePhone').value;
+            const candidateEmail = document.getElementById('candidateEmail').value;
+            const jobTitle = document.getElementById('jobTitle').value;
+            const jobCode = document.getElementById('jobCode').value;
+            
+            let emailBody = `FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW\n\n`;
+            emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
+            emailBody += `INFORMAÇÕES DO CANDIDATO\n`;
+            emailBody += `• Nome: ${candidateName}\n`;
+            emailBody += `• Telefone: ${candidatePhone}\n`;
+            emailBody += `• E-mail: ${candidateEmail}\n`;
+            emailBody += `• Vaga Pretendida: ${jobTitle}\n`;
+            if (jobCode) emailBody += `• Código da Vaga: ${jobCode}\n`;
+            emailBody += `\n`;
+            
+            // Adicionar respostas das partes
+            const parts = [
+                { 
+                    title: 'PARTE 1 - COMPORTAMENTAL',
+                    questions: [
+                        { id: 'p1a', text: 'a. Um cliente trouxe uma dúvida que você não tem certeza absoluta da resposta. Qual sua conduta?' },
+                        { id: 'p1b', text: 'b. Cliente pede que você execute uma ação para ele no sistema. O que faz?' },
+                        { id: 'p1c', text: 'c. Surgiu um problema que aparenta ser um bug e você não sabe contornar. O que faz?' },
+                        { id: 'p1d', text: 'd. Cliente acabou de assinar a ferramenta. Qual sua conduta inicial?' },
+                        { id: 'p1e1', text: '1. Roteiro para Dúvida operacional:' },
+                        { id: 'p1e2', text: '2. Roteiro para Suporte técnico:' }
+                    ]
+                },
+                {
+                    title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
+                    questions: [
+                        { id: 'p2a', text: 'a. Onde conectar uma nova conta de API OFICIAL?' },
+                        { id: 'p2b', text: 'b. Onde efetuar disparos em massa?' },
+                        { id: 'p2c', text: 'c. Onde adicionar acessos de equipe?' },
+                        { id: 'p2d', text: 'd. É possível segmentar e organizar os leads?' },
+                        { id: 'p2e', text: 'e. Onde entender mais sobre o Unnichat?' },
+                        { id: 'p2f', text: 'f. Quais funcionalidades você identifica?' }
+                    ]
+                },
+                {
+                    title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
+                    questions: [
+                        { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
+                        { id: 'p3b', text: 'b. Custo médio de envio da API?' },
+                        { id: 'p3c', text: 'c. Qualquer pessoa pode ter conta API?' },
+                        { id: 'p3d', text: 'd. Sua experiência com API Oficial:' }
+                    ]
+                }
+            ];
+            
+            parts.forEach(part => {
+                emailBody += `${part.title}\n\n`;
+                
+                part.questions.forEach(question => {
+                    const answer = document.getElementById(question.id).value;
+                    emailBody += `${question.text}\n${answer}\n\n`;
+                });
+            });
+            
+            emailBody += `\nUnnichat SendFlow agradece seu contato!`;
+            
+            return emailBody;
+        }
+        
+        // Evento de envio por e-mail
+        document.getElementById('sendEmail').addEventListener('click', function() {
+            if (!validateForm()) return;
+            
+            // Criar PDF
+            const doc = createPDF();
             const pdfBlob = doc.output('blob');
             const pdfUrl = URL.createObjectURL(pdfBlob);
             window.open(pdfUrl, '_blank');
             
-            // Criar corpo do e-mail
-            let emailBody = `Formulário de Questões Unnichat-SendFlow\n\n`; // Título alterado
-            emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
-            emailBody += `Candidato: ${candidateName}\n`;
-            emailBody += `Telefone: ${candidatePhone}\n`;
-            emailBody += `E-mail: ${candidateEmail}\n`;
-            emailBody += `Vaga Pretendida: ${jobTitle}\n`;
-            if (jobCode) emailBody += `Código da Vaga: ${jobCode}\n\n`;
+            // Criar e abrir cliente de e-mail
+            const candidateName = document.getElementById('candidateName').value;
+            const jobTitle = document.getElementById('jobTitle').value;
+            const emailBody = createEmailBody();
             
-            emailBody += `\nPARTE 1 - COMPORTAMENTAL\n\n`;
-            emailBody += `a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?\n${p1a}\n\n`;
-            emailBody += `b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?\n${p1b}\n\n`;
-            emailBody += `c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?\n${p1c}\n\n`;
-            emailBody += `d. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?\n${p1d}\n\n`;
-            emailBody += `1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta\n${p1e1}\n\n`;
-            emailBody += `2. Monte um Roteiro de atendimento para Suporte técnico\n${p1e2}\n\n`;
-            
-            emailBody += `\nPARTE 2 - CONHECIMENTO DO PRODUTO\n\n`;
-            emailBody += `a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?\n${p2a}\n\n`;
-            emailBody += `b. Onde o cliente aperta para efetuar disparos em massa para os clientes?\n${p2b}\n\n`;
-            emailBody += `c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?\n${p2c}\n\n`;
-            emailBody += `d. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?\n${p2d}\n\n`;
-            emailBody += `e. Onde você iria para entender mais sobre o Unnichat?\n${p2e}\n\n`;
-            emailBody += `f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?\n${p2f}\n\n`;
-            
-            emailBody += `\nPARTE 3 - CONHECIMENTOS ESPECÍFICOS\n\n`;
-            emailBody += `a. O que é API Oficial do WhatsApp?\n${p3a}\n\n`;
-            emailBody += `b. Qual o custo médio de envio da API?\n${p3b}\n\n`;
-            emailBody += `c. Qualquer pessoa pode ter uma conta API Oficial?\n${p3c}\n\n`;
-            emailBody += `d. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.\n${p3d}\n\n`;
-            
-            emailBody += `\n\nUnnichat SendFlow agradece seu contato!`;
-            
-            // Abrir cliente de e-mail
             window.location.href = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura para ${jobTitle} - ${candidateName}&body=${encodeURIComponent(emailBody)}`;
             
             // Mostrar modal de confirmação
             showModal();
             
-            // Limpar formulário após 1 segundo (para garantir que o envio foi concluído)
+            // Limpar formulário após 1 segundo
             setTimeout(clearForm, 1000);
         });
         
+        // Evento de envio por WhatsApp
         document.getElementById('sendWhatsApp').addEventListener('click', function() {
-            // Validar formulário
-            const form = document.getElementById('candidateForm');
-            const requiredFields = form.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = 'red';
-                } else {
-                    field.style.borderColor = '';
-                }
-            });
-            
-            // Validar formato do telefone
-            const phoneField = document.getElementById('candidatePhone');
-            const phoneRegex = /^\d{2}-\d{5}-\d{4}$/;
-            if (!phoneRegex.test(phoneField.value)) {
-                isValid = false;
-                phoneField.style.borderColor = 'red';
-                alert('Por favor, insira um telefone no formato 00-00000-0000');
-            }
-            
-            if (!isValid) {
-                alert('Por favor, preencha todos os campos obrigatórios corretamente antes de enviar.');
-                return;
-            }
+            if (!validateForm()) return;
             
             // Obter valores dos campos
             const candidateName = document.getElementById('candidateName').value;
@@ -883,27 +840,8 @@
             const jobTitle = document.getElementById('jobTitle').value;
             const jobCode = document.getElementById('jobCode').value;
             
-            const p1a = document.getElementById('p1a').value;
-            const p1b = document.getElementById('p1b').value;
-            const p1c = document.getElementById('p1c').value;
-            const p1d = document.getElementById('p1d').value;
-            const p1e1 = document.getElementById('p1e1').value;
-            const p1e2 = document.getElementById('p1e2').value;
-            
-            const p2a = document.getElementById('p2a').value;
-            const p2b = document.getElementById('p2b').value;
-            const p2c = document.getElementById('p2c').value;
-            const p2d = document.getElementById('p2d').value;
-            const p2e = document.getElementById('p2e').value;
-            const p2f = document.getElementById('p2f').value;
-            
-            const p3a = document.getElementById('p3a').value;
-            const p3b = document.getElementById('p3b').value;
-            const p3c = document.getElementById('p3c').value;
-            const p3d = document.getElementById('p3d').value;
-            
-            // Criar mensagem para WhatsApp com formatação melhorada
-            let whatsappMessage = `*FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW*\n\n`; // Título alterado
+            // Criar mensagem para WhatsApp com formatação
+            let whatsappMessage = `*FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW*\n\n`;
             whatsappMessage += `*Enviado em:* ${getFormattedDateTime()}\n\n`;
             whatsappMessage += `*INFORMAÇÕES DO CANDIDATO*\n`;
             whatsappMessage += `• *Nome:* ${candidateName}\n`;
@@ -913,27 +851,49 @@
             if (jobCode) whatsappMessage += `• *Código da Vaga:* ${jobCode}\n`;
             whatsappMessage += `\n`;
             
-            whatsappMessage += `*PARTE 1 - COMPORTAMENTAL*\n\n`;
-            whatsappMessage += `*a. Um cliente trouxe uma dúvida que você não tem certeza absoluta da resposta. Qual sua conduta?*\n${p1a}\n\n`;
-            whatsappMessage += `*b. Cliente pede que você execute uma ação para ele no sistema. O que faz?*\n${p1b}\n\n`;
-            whatsappMessage += `*c. Surgiu um problema que aparenta ser um bug e você não sabe contornar. O que faz?*\n${p1c}\n\n`;
-            whatsappMessage += `*d. Cliente acabou de assinar a ferramenta. Qual sua conduta inicial?*\n${p1d}\n\n`;
-            whatsappMessage += `*1. Roteiro para Dúvida operacional:*\n${p1e1}\n\n`;
-            whatsappMessage += `*2. Roteiro para Suporte técnico:*\n${p1e2}\n\n`;
+            // Adicionar respostas das partes
+            const parts = [
+                { 
+                    title: 'PARTE 1 - COMPORTAMENTAL',
+                    questions: [
+                        { id: 'p1a', text: 'a. Um cliente trouxe uma dúvida que você não tem certeza absoluta da resposta. Qual sua conduta?' },
+                        { id: 'p1b', text: 'b. Cliente pede que você execute uma ação para ele no sistema. O que faz?' },
+                        { id: 'p1c', text: 'c. Surgiu um problema que aparenta ser um bug e você não sabe contornar. O que faz?' },
+                        { id: 'p1d', text: 'd. Cliente acabou de assinar a ferramenta. Qual sua conduta inicial?' },
+                        { id: 'p1e1', text: '1. Roteiro para Dúvida operacional:' },
+                        { id: 'p1e2', text: '2. Roteiro para Suporte técnico:' }
+                    ]
+                },
+                {
+                    title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
+                    questions: [
+                        { id: 'p2a', text: 'a. Onde conectar uma nova conta de API OFICIAL?' },
+                        { id: 'p2b', text: 'b. Onde efetuar disparos em massa?' },
+                        { id: 'p2c', text: 'c. Onde adicionar acessos de equipe?' },
+                        { id: 'p2d', text: 'd. É possível segmentar e organizar os leads?' },
+                        { id: 'p2e', text: 'e. Onde entender mais sobre o Unnichat?' },
+                        { id: 'p2f', text: 'f. Quais funcionalidades você identifica?' }
+                    ]
+                },
+                {
+                    title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
+                    questions: [
+                        { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
+                        { id: 'p3b', text: 'b. Custo médio de envio da API?' },
+                        { id: 'p3c', text: 'c. Qualquer pessoa pode ter conta API?' },
+                        { id: 'p3d', text: 'd. Sua experiência com API Oficial:' }
+                    ]
+                }
+            ];
             
-            whatsappMessage += `*PARTE 2 - CONHECIMENTO DO PRODUTO*\n\n`;
-            whatsappMessage += `*a. Onde conectar uma nova conta de API OFICIAL?*\n${p2a}\n\n`;
-            whatsappMessage += `*b. Onde efetuar disparos em massa?*\n${p2b}\n\n`;
-            whatsappMessage += `*c. Onde adicionar acessos de equipe?*\n${p2c}\n\n`;
-            whatsappMessage += `*d. É possível segmentar e organizar os leads?*\n${p2d}\n\n`;
-            whatsappMessage += `*e. Onde entender mais sobre o Unnichat?*\n${p2e}\n\n`;
-            whatsappMessage += `*f. Quais funcionalidades você identifica?*\n${p2f}\n\n`;
-            
-            whatsappMessage += `*PARTE 3 - CONHECIMENTOS ESPECÍFICOS*\n\n`;
-            whatsappMessage += `*a. O que é API Oficial do WhatsApp?*\n${p3a}\n\n`;
-            whatsappMessage += `*b. Custo médio de envio da API?*\n${p3b}\n\n`;
-            whatsappMessage += `*c. Qualquer pessoa pode ter conta API?*\n${p3c}\n\n`;
-            whatsappMessage += `*d. Sua experiência com API Oficial:*\n${p3d}\n\n`;
+            parts.forEach(part => {
+                whatsappMessage += `*${part.title}*\n\n`;
+                
+                part.questions.forEach(question => {
+                    const answer = document.getElementById(question.id).value;
+                    whatsappMessage += `${question.text}\n${answer}\n\n`;
+                });
+            });
             
             whatsappMessage += `\n*Unnichat SendFlow agradece seu contato!*`;
             
@@ -946,7 +906,7 @@
             // Mostrar modal de confirmação
             showModal();
             
-            // Limpar formulário após 1 segundo (para garantir que o envio foi concluído)
+            // Limpar formulário após 1 segundo
             setTimeout(clearForm, 1000);
         });
     </script>
