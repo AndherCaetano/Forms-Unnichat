@@ -315,10 +315,14 @@
             padding: 20px;
             font-family: Arial, sans-serif;
         }
-     .intro-text {
-            text-align: justify;
-            margin-bottom: 15px;
-        }
+    .intro-text {
+    text-align: justify;
+    margin-bottom: 15px;
+    width: 100%; /* ou um valor específico como 600px */
+    max-width: 800px; /* ajuste conforme necessário */
+    hyphens: auto;
+   
+}
 
         }
     </style>
@@ -331,14 +335,18 @@
             
             <header>
                 <h1><span class="emoji">📝</span> Questions:Unnichat-SendFlow</h1>
-             <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat!</p>
-    <p class="intro-text">Então, parabéns! 🥳</p>
-    <p class="intro-text">Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.</p>
-    <p class="intro-text">O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.</p>
-    <p class="intro-text"><strong>ORIENTAÇÕES PARA RESPOSTA:</strong></p>
-    <p class="intro-text">Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviada para você.</p>
-    <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p> 
-           
+             <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat!<br>
+    Então, parabéns! 🥳<br>
+    Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.
+</p>
+<p class="intro-text">
+    O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.<br>
+    <strong>ORIENTAÇÕES PARA RESPOSTA:</strong><br>
+    Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviada para você.
+</p>
+<p class="intro-text">
+    Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.
+</p>
 
             <form id="candidateForm">
                 <!-- Seção de informações do candidato -->
