@@ -316,7 +316,7 @@
             <header>
                 <h1><span class="emoji">📝</span> Questions:Unnichat-SendFlow</h1>
                 <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. </p><p>Todos os campos são obrigatórios, exceto quando indicado.
-            </header>
+           
 
             <form id="candidateForm">
                 <!-- Seção de informações do candidato -->
