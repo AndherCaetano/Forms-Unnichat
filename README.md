@@ -775,7 +775,7 @@
             window.open(pdfUrl, '_blank');
             
             // Criar corpo do e-mail
-            let emailBody = `Formulário de Candidatura Unnichat\n\n`;
+            let emailBody = `Formulário de Questões Unnichat\n\n`;
             emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
             emailBody += `Candidato: ${candidateName}\n`;
             emailBody += `Telefone: ${candidatePhone}\n`;
@@ -873,7 +873,7 @@
             const p3d = document.getElementById('p3d').value;
             
             // Criar mensagem para WhatsApp com formatação melhorada
-            let whatsappMessage = `*FORMULÁRIO DE CANDIDATURA UNNICHAT*\n\n`;
+            let whatsappMessage = `*FORMULÁRIO DE QUESTÕES UNNICHAT*\n\n`;
             whatsappMessage += `*Enviado em:* ${getFormattedDateTime()}\n\n`;
             whatsappMessage += `*INFORMAÇÕES DO CANDIDATO*\n`;
             whatsappMessage += `• *Nome:* ${candidateName}\n`;
