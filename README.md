@@ -309,6 +309,11 @@
             input, textarea {
                 font-size: 16px !important;
             }
+
+ .intro-text {
+            text-align: justify;
+        }
+
         }
     </style>
 </head>
@@ -320,19 +325,13 @@
             
             <header>
                 <h1><span class="emoji">📝</span> Questions:Unnichat-SendFlow</h1>
-                <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat!
-<p>
-Então, parabéns! 🥳
-<p>
-Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.
-<p>
-O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.
-<p>
-ORIENTAÇÕES PARA RESPOSTA:
-<p>
-Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviado para você.
-<p>
-Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. <p>Todos os campos são obrigatórios, exceto quando indicado. </p> 
+             <p class="intro-text">Olá, se você chegou até aqui é porque possui as atribuições necessárias para fazer parte da Equipe Unnichat!</p>
+    <p class="intro-text">Então, parabéns! 🥳</p>
+    <p class="intro-text">Essa etapa é composta por algumas perguntas e um teste prático criado para avaliar suas habilidades e abordagens.</p>
+    <p class="intro-text">O teste será avaliado com confidencialidade, e suas soluções não serão usadas para fins comerciais.</p>
+    <p class="intro-text"><strong>ORIENTAÇÕES PARA RESPOSTA:</strong></p>
+    <p class="intro-text">Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviada para você.</p>
+    <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p> 
            
 
             <form id="candidateForm">
