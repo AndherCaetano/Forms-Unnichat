@@ -1,8 +1,13 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste prático de habilidades -  Unnichat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    <meta name="theme-color" content="#128C7E">
+    <title>Teste prático de habilidades - Unnichat</title>
     <style>
         :root {
             --primary-color: #25D366;
@@ -18,90 +23,105 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--light-gray);
-            padding: 20px;
+            padding: 10px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: white;
-            padding: 30px;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         
         .logo {
-            max-height: 80px;
-            margin-bottom: 20px;
+            max-height: 60px;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .header-image {
             width: 100%;
-            max-height: 150px;
+            max-height: 120px;
             object-fit: contain;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 8px;
         }
         
         .screen-image {
             width: 100%;
-            max-width: 800px;
-            margin: 15px auto;
+            max-width: 100%;
+            margin: 10px auto;
             display: block;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
         
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--medium-gray);
         }
         
         h1 {
             color: var(--secondary-color);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
         }
         
         h2 {
             color: var(--secondary-color);
-            margin: 25px 0 15px;
+            margin: 20px 0 12px;
             padding-bottom: 5px;
             border-bottom: 2px solid var(--medium-gray);
+            font-size: 1.3rem;
         }
         
         h3 {
-            margin: 20px 0 10px;
+            margin: 15px 0 8px;
             color: var(--secondary-color);
+            font-size: 1.1rem;
         }
         
         .intro-text {
-            margin-bottom: 20px;
-            font-size: 16px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
         
         .part {
-            margin-bottom: 30px;
-            padding: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
             background-color: var(--light-gray);
             border-radius: 8px;
         }
         
         .question {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .question label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
         }
         
         .question input[type="text"],
@@ -109,15 +129,16 @@
         .question input[type="tel"],
         .question textarea {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid var(--medium-gray);
             border-radius: 5px;
             resize: vertical;
-            font-size: 15px;
+            font-size: 0.9rem;
+            -webkit-appearance: none;
         }
         
         .question textarea {
-            min-height: 100px;
+            min-height: 80px;
         }
         
         .question input:focus,
@@ -130,21 +151,21 @@
         .buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: 20px;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
         
         button {
-            padding: 12px 25px;
+            padding: 10px 15px;
             border: none;
             border-radius: 5px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            flex: 1;
-            min-width: 200px;
+            flex: 1 1 100%;
+            min-width: 0;
         }
         
         .btn-email {
@@ -157,33 +178,33 @@
             color: white;
         }
         
-        button:hover {
+        button:hover, button:focus {
             opacity: 0.9;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
         
         .emoji {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-right: 5px;
         }
         
         .candidate-info {
             background-color: #f0f8ff;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
         .form-group {
-            flex: 1;
-            min-width: 200px;
+            flex: 1 1 100%;
+            min-width: 0;
         }
         
         .required-field::after {
@@ -191,40 +212,135 @@
             color: red;
         }
         
-        @media (max-width: 768px) {
+        /* Modal de confirmação */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .modal-content p {
+            margin-bottom: 15px;
+        }
+        
+        .modal-close {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Media Queries para diferentes tamanhos de tela */
+        @media (min-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
             .container {
                 padding: 20px;
             }
             
-            .part {
-                padding: 15px;
+            .logo {
+                max-height: 70px;
+                margin-bottom: 20px;
             }
             
-            button {
-                width: 100%;
-            }
-            
-            .form-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 15px;
+            .header-image {
+                max-height: 140px;
+                margin-bottom: 20px;
             }
             
             h1 {
-                font-size: 24px;
+                font-size: 1.7rem;
             }
             
             h2 {
-                font-size: 20px;
+                font-size: 1.4rem;
+            }
+            
+            button {
+                flex: 1 1 calc(50% - 10px);
+            }
+            
+            .form-group {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            .logo {
+                max-height: 80px;
+            }
+            
+            .header-image {
+                max-height: 150px;
+            }
+            
+            h1 {
+                font-size: 1.9rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .intro-text {
+                font-size: 1rem;
+            }
+            
+            button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .question label,
+            .question input,
+            .question textarea {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                padding: 30px;
+            }
+        }
+        
+        /* Ajustes para dispositivos muito pequenos */
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            h2 {
+                font-size: 1.1rem;
+            }
+            
+            .question input,
+            .question textarea {
+                padding: 8px;
             }
         }
     </style>
@@ -385,11 +501,42 @@
         </form>
     </div>
 
+    <!-- Modal de confirmação -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <p>Suas respostas foram enviadas com sucesso!</p>
+            <p>Aguarde o nosso retorno o mais breve possível, Unnichat SendFlow, agradece, obrigado!</p>
+            <button class="modal-close" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         // Inicializar jsPDF
         const { jsPDF } = window.jspdf;
+        
+        // Funções para o modal
+        function showModal() {
+            document.getElementById('confirmationModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        }
+        
+        // Função para limpar o formulário
+        function clearForm() {
+            document.getElementById('candidateForm').reset();
+        }
+        
+        // Função para formatar data e hora
+        function getFormattedDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('pt-BR');
+            const time = now.toLocaleTimeString('pt-BR');
+            return `${date} às ${time}`;
+        }
         
         // Máscara para telefone
         document.getElementById('candidatePhone').addEventListener('input', function(e) {
@@ -467,7 +614,7 @@
             
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('Data: ' + new Date().toLocaleDateString(), 105, yPosition, { align: 'center' });
+            doc.text('Data e hora do envio: ' + getFormattedDateTime(), 105, yPosition, { align: 'center' });
             yPosition += 20;
             
             // Adicionar informações do candidato
@@ -653,6 +800,11 @@
             yPosition = addTextWithBreaks(p3d, marginLeft + 5, yPosition, maxWidth - 5, 7);
             doc.setTextColor(0, 0, 0);
             
+            // Adicionar rodapé com data e hora
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text('Enviado em: ' + getFormattedDateTime(), marginLeft, 290, { align: 'left' });
+            
             // Salvar PDF em nova aba
             const pdfBlob = doc.output('blob');
             const pdfUrl = URL.createObjectURL(pdfBlob);
@@ -660,6 +812,7 @@
             
             // Criar corpo do e-mail
             let emailBody = `Formulário de Candidatura Unnichat\n\n`;
+            emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
             emailBody += `Candidato: ${candidateName}\n`;
             emailBody += `Telefone: ${candidatePhone}\n`;
             emailBody += `E-mail: ${candidateEmail}\n`;
@@ -688,8 +841,16 @@
             emailBody += `c. Qualquer pessoa pode ter uma conta API Oficial?\n${p3c}\n\n`;
             emailBody += `d. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.\n${p3d}\n\n`;
             
+            emailBody += `\n\nUnnichat SendFlow agradece seu contato!`;
+            
             // Abrir cliente de e-mail
             window.location.href = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura para ${jobTitle} - ${candidateName}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Mostrar modal de confirmação
+            showModal();
+            
+            // Limpar formulário após 1 segundo (para garantir que o envio foi concluído)
+            setTimeout(clearForm, 1000);
         });
         
         document.getElementById('sendWhatsApp').addEventListener('click', function() {
@@ -749,8 +910,7 @@
             
             // Criar mensagem para WhatsApp com formatação melhorada
             let whatsappMessage = `*FORMULÁRIO DE CANDIDATURA UNNICHAT*\n\n`;
-            whatsappMessage += `*Data:* ${new Date().toLocaleDateString()}\n\n`;
-            
+            whatsappMessage += `*Enviado em:* ${getFormattedDateTime()}\n\n`;
             whatsappMessage += `*INFORMAÇÕES DO CANDIDATO*\n`;
             whatsappMessage += `• *Nome:* ${candidateName}\n`;
             whatsappMessage += `• *Telefone:* ${candidatePhone}\n`;
@@ -781,11 +941,19 @@
             whatsappMessage += `*c. Qualquer pessoa pode ter conta API?*\n${p3c}\n\n`;
             whatsappMessage += `*d. Sua experiência com API Oficial:*\n${p3d}\n\n`;
             
+            whatsappMessage += `\n*Unnichat SendFlow agradece seu contato!*`;
+            
             // Codificar mensagem para URL
             const encodedMessage = encodeURIComponent(whatsappMessage);
             
             // Abrir WhatsApp com a mensagem
             window.open(`https://wa.me/5511996504486?text=${encodedMessage}`, '_blank');
+            
+            // Mostrar modal de confirmação
+            showModal();
+            
+            // Limpar formulário após 1 segundo (para garantir que o envio foi concluído)
+            setTimeout(clearForm, 1000);
         });
     </script>
 </body>
