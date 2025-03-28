@@ -360,7 +360,7 @@
                 
                 <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p><br>
                
-                Ao finalizar,clique em enviar por e-mail e whatsapp, e compartilhe o arquivo PDF para o email: shi@sendflow.com.br, com cópia para luiz@sendflow.pro
+                * Ao finalizar, clique no botões Enviar por E-mail e Whatsapp, e compartilhe o arquivo PDF para o email: <strong>shi@sendflow.com.br</strong>, com cópia para <strong>luiz@sendflow.pro</strong>
             </header>
 
             <form id="candidateForm">
