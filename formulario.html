@@ -358,7 +358,9 @@
                 
                 <p class="intro-text"><strong>ORIENTAÇÕES PARA RESPOSTA:</strong> Para esta etapa do teste, você terá 24 horas até a entrega final, a contar do horário em que a mensagem com o teste foi enviada para você.</p>
                 
-                <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p>
+                <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p><br>
+               
+                <p Ao finalizar,clique em enviar por e-mail e whatsapp,e compartilhe o arquivo PDF para o email: shi@sendflow.com.br, com cópia para luiz@sendflow.pro  </p>
             </header>
 
             <form id="candidateForm">
@@ -393,7 +395,7 @@
                     <div class="form-row">
                         <div class="form-group question">
                             <label for="jobCode">Código da Vaga (opcional):</label>
-                            <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver" 🤙🏾>
+                            <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver 🤙🏾">
                         </div>
                     </div>
                 </div>
