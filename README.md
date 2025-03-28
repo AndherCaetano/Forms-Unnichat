@@ -1,75 +1,69 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="width">
     <meta name="theme-color" content="#128C7E">
-    <title>Teste prático de habilidades - Unnichat</title>
+    <meta name="format-detection" content="telephone=no">
+    <title>Formulário de Candidatura Unnichat</title>
     <style>
         :root {
             --primary-color: #25D366;
             --secondary-color: #128C7E;
-            --text-color: #333;
+            --text-color: #333333;
             --light-gray: #f5f5f5;
             --medium-gray: #e0e0e0;
             --dark-gray: #757575;
+            --white: #ffffff;
+            --error-color: #ff4444;
         }
         
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+                         Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.5;
             color: var(--text-color);
             background-color: var(--light-gray);
-            padding: 10px;
+            padding: 0;
+            margin: 0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         
         .container {
+            width: 100%;
+            max-width: 100%;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0 auto;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .content-wrapper {
+            padding: 12px;
             max-width: 900px;
             margin: 0 auto;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         
         .logo {
             max-height: 60px;
-            max-width: 100%;
+            width: auto;
             height: auto;
-            margin-bottom: 15px;
+            margin: 12px auto;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .header-image {
-            width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-        
-        .screen-image {
-            width: 100%;
-            max-width: 100%;
-            margin: 10px auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
         
         header {
@@ -81,8 +75,10 @@
         
         h1 {
             color: var(--secondary-color);
-            margin-bottom: 8px;
-            font-size: 1.5rem;
+            margin: 10px 0;
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
+            font-weight: 600;
+            line-height: 1.3;
         }
         
         h2 {
@@ -90,19 +86,21 @@
             margin: 20px 0 12px;
             padding-bottom: 5px;
             border-bottom: 2px solid var(--medium-gray);
-            font-size: 1.3rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 600;
         }
         
         h3 {
             margin: 15px 0 8px;
             color: var(--secondary-color);
-            font-size: 1.1rem;
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
         }
         
         .intro-text {
             margin-bottom: 15px;
-            font-size: 0.9rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             line-height: 1.5;
+            color: var(--dark-gray);
         }
         
         .part {
@@ -118,9 +116,14 @@
         
         .question label {
             display: block;
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 6px;
-            font-size: 0.9rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: var(--error-color);
         }
         
         .question input[type="text"],
@@ -128,16 +131,20 @@
         .question input[type="tel"],
         .question textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--medium-gray);
-            border-radius: 5px;
-            resize: vertical;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            background-color: var(--white);
             -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            transition: border-color 0.3s ease;
         }
         
         .question textarea {
-            min-height: 80px;
+            min-height: 100px;
+            resize: vertical;
         }
         
         .question input:focus,
@@ -147,39 +154,51 @@
             box-shadow: 0 0 0 2px rgba(18, 140, 126, 0.2);
         }
         
-        .buttons {
+        .form-row {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
         
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+        .form-group {
             flex: 1 1 100%;
             min-width: 0;
         }
         
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        button {
+            flex: 1 1 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         .btn-email {
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--white);
         }
         
         .btn-whatsapp {
             background-color: var(--primary-color);
-            color: white;
+            color: var(--white);
         }
         
-        button:hover, button:focus {
+        button:active, button:focus {
             opacity: 0.9;
-            transform: translateY(-1px);
+            transform: translateY(1px);
         }
         
         .emoji {
@@ -194,310 +213,256 @@
             margin-bottom: 20px;
         }
         
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .form-group {
-            flex: 1 1 100%;
-            min-width: 0;
-        }
-        
-        .required-field::after {
-            content: " *";
-            color: red;
-        }
-        
-        /* Modal de confirmação */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
+        .screen-image {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            max-width: 100%;
+            margin: 10px auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
         }
         
         .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 80%;
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            width: 100%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .modal-content p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.5;
         }
         
         .modal-close {
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--white);
             border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
             cursor: pointer;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
         }
         
-        /* Media Queries para diferentes tamanhos de tela */
-        @media (min-width: 480px) {
-            body {
-                padding: 15px;
+        @media (max-width: 360px) {
+            .content-wrapper {
+                padding: 10px;
             }
             
-            .container {
+            .part {
+                padding: 12px;
+            }
+            
+            .question input,
+            .question textarea {
+                padding: 10px;
+            }
+        }
+        
+        @media (min-width: 600px) {
+            .content-wrapper {
                 padding: 20px;
             }
             
-            .logo {
-                max-height: 70px;
-                margin-bottom: 20px;
-            }
-            
-            .header-image {
-                max-height: 140px;
-                margin-bottom: 20px;
-            }
-            
-            h1 {
-                font-size: 1.7rem;
-            }
-            
-            h2 {
-                font-size: 1.4rem;
-            }
-            
-            button {
-                flex: 1 1 calc(50% - 10px);
-            }
-            
             .form-group {
-                flex: 1 1 calc(50% - 10px);
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                padding: 25px;
-            }
-            
-            .logo {
-                max-height: 80px;
-            }
-            
-            .header-image {
-                max-height: 150px;
-            }
-            
-            h1 {
-                font-size: 1.9rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            .intro-text {
-                font-size: 1rem;
+                flex: 1 1 calc(50% - 12px);
             }
             
             button {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-            
-            .question label,
-            .question input,
-            .question textarea {
-                font-size: 1rem;
+                flex: 1 1 calc(50% - 12px);
             }
         }
         
-        @media (min-width: 992px) {
-            .container {
-                padding: 30px;
-            }
-        }
-        
-        /* Ajustes para dispositivos muito pequenos */
-        @media (max-width: 360px) {
-            h1 {
-                font-size: 1.3rem;
-            }
-            
-            h2 {
-                font-size: 1.1rem;
-            }
-            
-            .question input,
-            .question textarea {
-                padding: 8px;
+        @supports (-webkit-touch-callout: none) {
+            input, textarea {
+                font-size: 16px !important;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Logotipo da empresa -->
-        <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png" alt="Unnichat Logo" class="logo">
-        
-        <header>
-            <h1><span class="emoji">📝</span> Formulário de Candidatura</h1>
-            <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p>
-        </header>
+        <div class="content-wrapper">
+            <!-- Logotipo da empresa -->
+            <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png" alt="Unnichat Logo" class="logo">
+            
+            <header>
+                <h1><span class="emoji">📝</span> Formulário de Candidatura</h1>
+                <p class="intro-text">Preencha o formulário abaixo para conhecermos melhor seu perfil e suas habilidades. Todos os campos são obrigatórios, exceto quando indicado.</p>
+            </header>
 
-        <form id="candidateForm">
-            <!-- Seção de informações do candidato -->
-            <div class="candidate-info">
-                <h2>Informações do Candidato</h2>
-                
-                <div class="form-row">
-                    <div class="form-group question">
-                        <label for="candidateName" class="required-field">Nome:</label>
-                        <input type="text" id="candidateName" name="candidateName" maxlength="40" required placeholder="Digite seu nome completo (máx. 40 caracteres)">
+            <form id="candidateForm">
+                <!-- Seção de informações do candidato -->
+                <div class="candidate-info">
+                    <h2>Informações do Candidato</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group question">
+                            <label for="candidateName" class="required-field">Nome:</label>
+                            <input type="text" id="candidateName" name="candidateName" maxlength="40" required placeholder="Digite seu nome completo (máx. 40 caracteres)">
+                        </div>
+                        
+                        <div class="form-group question">
+                            <label for="candidatePhone" class="required-field">Telefone:</label>
+                            <input type="tel" id="candidatePhone" name="candidatePhone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required placeholder="Formato: 00-00000-0000">
+                        </div>
                     </div>
                     
-                    <div class="form-group question">
-                        <label for="candidatePhone" class="required-field">Telefone:</label>
-                        <input type="tel" id="candidatePhone" name="candidatePhone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required placeholder="Formato: 00-00000-0000">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group question">
-                        <label for="candidateEmail" class="required-field">E-mail:</label>
-                        <input type="email" id="candidateEmail" name="candidateEmail" required placeholder="Digite seu e-mail">
+                    <div class="form-row">
+                        <div class="form-group question">
+                            <label for="candidateEmail" class="required-field">E-mail:</label>
+                            <input type="email" id="candidateEmail" name="candidateEmail" required placeholder="Digite seu e-mail">
+                        </div>
+                        
+                        <div class="form-group question">
+                            <label for="jobTitle" class="required-field">Nome da vaga pretendida:</label>
+                            <input type="text" id="jobTitle" name="jobTitle" maxlength="30" required placeholder="Digite o nome da vaga (máx. 30 caracteres)">
+                        </div>
                     </div>
                     
-                    <div class="form-group question">
-                        <label for="jobTitle" class="required-field">Nome da vaga pretendida:</label>
-                        <input type="text" id="jobTitle" name="jobTitle" maxlength="30" required placeholder="Digite o nome da vaga (máx. 30 caracteres)">
+                    <div class="form-row">
+                        <div class="form-group question">
+                            <label for="jobCode">Código da Vaga (opcional):</label>
+                            <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver">
+                        </div>
                     </div>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-group question">
-                        <label for="jobCode">Código da Vaga (opcional):</label>
-                        <input type="text" id="jobCode" name="jobCode" placeholder="Digite o código da vaga, se houver">
-                    </div>
-                </div>
-            </div>
 
-            <div class="part">
-                <h2>PARTE 1 - Comportamental</h2>
-                <p>Considere o seguinte cenário: Você presta suporte para uma ferramenta de automação de WhatsApp.</p>
-                
-                <div class="question">
-                    <label for="p1a" class="required-field">a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?</label>
-                    <textarea id="p1a" name="p1a" required></textarea>
+                <div class="part">
+                    <h2>PARTE 1 - Comportamental</h2>
+                    <p>Considere o seguinte cenário: Você presta suporte para uma ferramenta de automação de WhatsApp.</p>
+                    
+                    <div class="question">
+                        <label for="p1a" class="required-field">a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?</label>
+                        <textarea id="p1a" name="p1a" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p1b" class="required-field">b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?</label>
+                        <textarea id="p1b" name="p1b" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p1c" class="required-field">c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?</label>
+                        <textarea id="p1c" name="p1c" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p1d" class="required-field">d. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?</label>
+                        <textarea id="p1d" name="p1d" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p1e1" class="required-field">1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta</label>
+                        <textarea id="p1e1" name="p1e1" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p1e2" class="required-field">2. Monte um Roteiro de atendimento para Suporte técnico</label>
+                        <textarea id="p1e2" name="p1e2" required></textarea>
+                    </div>
                 </div>
                 
-                <div class="question">
-                    <label for="p1b" class="required-field">b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?</label>
-                    <textarea id="p1b" name="p1b" required></textarea>
+                <div class="part">
+                    <h2>PARTE 2 - Conhecimento do Produto</h2>
+                    <p>Observe essa tela:</p>
+                    
+                    <!-- Imagem da tela centralizada -->
+                    <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.10.17.png" alt="Tela do Unnichat" class="screen-image">
+                    
+                    <div class="question">
+                        <label for="p2a" class="required-field">a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?</label>
+                        <textarea id="p2a" name="p2a" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p2b" class="required-field">b. Onde o cliente aperta para efetuar disparos em massa para os clientes?</label>
+                        <textarea id="p2b" name="p2b" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p2c" class="required-field">c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?</label>
+                        <textarea id="p2c" name="p2c" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p2d" class="required-field">d. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?</label>
+                        <textarea id="p2d" name="p2d" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p2e" class="required-field">e. Onde você iria para entender mais sobre o Unnichat?</label>
+                        <textarea id="p2e" name="p2e" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p2f" class="required-field">f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?</label>
+                        <textarea id="p2f" name="p2f" required></textarea>
+                    </div>
                 </div>
                 
-                <div class="question">
-                    <label for="p1c" class="required-field">c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?</label>
-                    <textarea id="p1c" name="p1c" required></textarea>
+                <div class="part">
+                    <h2>PARTE 3 - Conhecimentos Específicos</h2>
+                    <p>Agora, teremos perguntas nichadas. Se você não souber a resposta, não se preocupe, não é uma etapa eliminatória (mas você pode tentar responder também).</p>
+                    
+                    <div class="question">
+                        <label for="p3a" class="required-field">a. O que é API Oficial do WhatsApp?</label>
+                        <textarea id="p3a" name="p3a" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p3b" class="required-field">b. Qual o custo médio de envio da API?</label>
+                        <textarea id="p3b" name="p3b" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p3c" class="required-field">c. Qualquer pessoa pode ter uma conta API Oficial?</label>
+                        <textarea id="p3c" name="p3c" required></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="p3d" class="required-field">d. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.</label>
+                        <textarea id="p3d" name="p3d" required></textarea>
+                    </div>
                 </div>
                 
-                <div class="question">
-                    <label for="p1d" class="required-field">d. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?</label>
-                    <textarea id="p1d" name="p1d" required></textarea>
+                <div class="buttons">
+                    <button type="button" class="btn-email" id="sendEmail">
+                        <span class="emoji">📧</span> Enviar por E-mail
+                    </button>
+                    <button type="button" class="btn-whatsapp" id="sendWhatsApp">
+                        <span class="emoji">💬</span> Enviar por WhatsApp
+                    </button>
                 </div>
-                
-                <div class="question">
-                    <label for="p1e1" class="required-field">1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta</label>
-                    <textarea id="p1e1" name="p1e1" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p1e2" class="required-field">2. Monte um Roteiro de atendimento para Suporte técnico</label>
-                    <textarea id="p1e2" name="p1e2" required></textarea>
-                </div>
-            </div>
-            
-            <div class="part">
-                <h2>PARTE 2 - Conhecimento do Produto</h2>
-                <p>Observe essa tela:</p>
-                
-                <!-- Imagem da tela centralizada -->
-                <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.10.17.png" alt="Tela do Unnichat" class="screen-image">
-                
-                <div class="question">
-                    <label for="p2a" class="required-field">a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?</label>
-                    <textarea id="p2a" name="p2a" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p2b" class="required-field">b. Onde o cliente aperta para efetuar disparos em massa para os clientes?</label>
-                    <textarea id="p2b" name="p2b" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p2c" class="required-field">c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?</label>
-                    <textarea id="p2c" name="p2c" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p2d" class="required-field">d. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?</label>
-                    <textarea id="p2d" name="p2d" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p2e" class="required-field">e. Onde você iria para entender mais sobre o Unnichat?</label>
-                    <textarea id="p2e" name="p2e" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p2f" class="required-field">f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?</label>
-                    <textarea id="p2f" name="p2f" required></textarea>
-                </div>
-            </div>
-            
-            <div class="part">
-                <h2>PARTE 3 - Conhecimentos Específicos</h2>
-                <p>Agora, teremos perguntas nichadas. Se você não souber a resposta, não se preocupe, não é uma etapa eliminatória (mas você pode tentar responder também).</p>
-                
-                <div class="question">
-                    <label for="p3a" class="required-field">a. O que é API Oficial do WhatsApp?</label>
-                    <textarea id="p3a" name="p3a" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p3b" class="required-field">b. Qual o custo médio de envio da API?</label>
-                    <textarea id="p3b" name="p3b" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p3c" class="required-field">c. Qualquer pessoa pode ter uma conta API Oficial?</label>
-                    <textarea id="p3c" name="p3c" required></textarea>
-                </div>
-                
-                <div class="question">
-                    <label for="p3d" class="required-field">d. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.</label>
-                    <textarea id="p3d" name="p3d" required></textarea>
-                </div>
-            </div>
-            
-            <div class="buttons">
-                <button type="button" class="btn-email" id="sendEmail">
-                    <span class="emoji">📧</span> Enviar por E-mail
-                </button>
-                <button type="button" class="btn-whatsapp" id="sendWhatsApp">
-                    <span class="emoji">💬</span> Enviar por WhatsApp
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     <!-- Modal de confirmação -->
@@ -517,11 +482,11 @@
         
         // Funções para o modal
         function showModal() {
-            document.getElementById('confirmationModal').style.display = 'block';
+            document.getElementById('confirmationModal').classList.add('active');
         }
         
         function closeModal() {
-            document.getElementById('confirmationModal').style.display = 'none';
+            document.getElementById('confirmationModal').classList.remove('active');
         }
         
         // Função para limpar o formulário
