@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,6 @@
     <title>Formulário Unnichat SendFlow</title>
     
     <style>
-        /* ===== VARIÁVEIS E RESET ===== */
         :root {
             --primary-color: #25D366;
             --secondary-color: #128C7E;
@@ -31,7 +31,6 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* ===== ESTILOS GERAIS ===== */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
                          Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -62,7 +61,6 @@
             margin: 0 auto;
         }
         
-        /* ===== CABEÇALHO E TIPOGRAFIA ===== */
         .logo {
             max-height: 60px;
             width: auto;
@@ -95,12 +93,6 @@
             font-weight: 600;
         }
         
-        h3 {
-            margin: 18px 0 10px;
-            color: var(--secondary-color);
-            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-        }
-        
         .intro-text {
             text-align: justify;
             margin-bottom: 18px;
@@ -111,7 +103,6 @@
             text-justify: inter-word;
         }
         
-        /* ===== SEÇÕES E FORMULÁRIO ===== */
         .part {
             margin-bottom: 25px;
             padding: 20px;
@@ -168,7 +159,6 @@
             box-shadow: 0 0 0 3px rgba(18, 140, 126, 0.15);
         }
         
-        /* Contador de caracteres */
         .char-counter {
             font-size: 0.8rem;
             color: var(--dark-gray);
@@ -197,7 +187,6 @@
             min-width: 0;
         }
         
-        /* ===== BOTÕES ===== */
         .buttons {
             display: flex;
             flex-wrap: wrap;
@@ -228,6 +217,11 @@
             color: var(--white);
         }
         
+        .btn-clear {
+            background-color: var(--dark-gray);
+            color: var(--white);
+        }
+        
         button:hover {
             opacity: 0.9;
             transform: translateY(-2px);
@@ -237,7 +231,6 @@
             transform: translateY(0);
         }
         
-        /* ===== ELEMENTOS ESPECIAIS ===== */
         .emoji {
             font-size: 1.1em;
             margin-right: 5px;
@@ -259,7 +252,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
-        /* ===== MODAL ===== */
         .modal {
             position: fixed;
             top: 0;
@@ -310,11 +302,6 @@
             transition: all 0.3s ease;
         }
         
-        .modal-close:hover {
-            opacity: 0.9;
-        }
-        
-        /* ===== MEDIA QUERIES ===== */
         @media (max-width: 480px) {
             body {
                 padding: 10px;
@@ -349,22 +336,12 @@
                 padding: 30px;
             }
         }
-        
-        /* Correção para iOS */
-        @supports (-webkit-touch-callout: none) {
-            input, 
-            textarea,
-            select {
-                font-size: 16px !important;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="content-wrapper">
-            <!-- Logotipo -->
-            <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png" alt="Unnichat Logo" class="logo">
+            <img src="https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png" alt="Unnichat Logo" class="logo" id="logoImage">
             
             <header>
                 <h1><span class="emoji">📝</span> Formulário Unnichat SendFlow</h1>
@@ -381,7 +358,6 @@
             </header>
 
             <form id="candidateForm">
-                <!-- Seção de informações do candidato -->
                 <div class="candidate-info">
                     <h2>Informações do Candidato</h2>
                     
@@ -417,7 +393,6 @@
                     </div>
                 </div>
 
-                <!-- Parte 1 - Comportamental -->
                 <div class="part">
                     <h2>PARTE 1 - Comportamental</h2>
                     <p class="intro-text">Considere o seguinte cenário: Você presta suporte para uma ferramenta de automação de WhatsApp.</p>
@@ -459,7 +434,6 @@
                     </div>
                 </div>
                 
-                <!-- Parte 2 - Conhecimento do Produto -->
                 <div class="part">
                     <h2>PARTE 2 - Conhecimento do Produto</h2>
                     <p class="intro-text">Observe essa tela:</p>
@@ -503,7 +477,6 @@
                     </div>
                 </div>
                 
-                <!-- Parte 3 - Conhecimentos Específicos -->
                 <div class="part">
                     <h2>PARTE 3 - Conhecimentos Específicos</h2>
                     <p class="intro-text">Agora, teremos perguntas nichadas. Se você não souber a resposta, não se preocupe, não é uma etapa eliminatória (mas você pode tentar responder também).</p>
@@ -533,7 +506,6 @@
                     </div>
                 </div>
                 
-                <!-- Botões de envio -->
                 <div class="buttons">
                     <button type="button" class="btn-email" id="sendEmail">
                         <span class="emoji">📧</span> Enviar por E-mail
@@ -541,12 +513,14 @@
                     <button type="button" class="btn-whatsapp" id="sendWhatsApp">
                         <span class="emoji">💬</span> Enviar por WhatsApp
                     </button>
+                    <button type="button" class="btn-clear" id="clearForm">
+                        <span class="emoji">🧹</span> Limpar Formulário
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Modal de confirmação -->
     <div id="confirmationModal" class="modal">
         <div class="modal-content">
             <p>Suas respostas foram enviadas com sucesso!</p>
@@ -555,415 +529,424 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        // Inicializar jsPDF
-        const { jsPDF } = window.jspdf;
-        
-        // Funções para o modal
-        function showModal() {
-            document.getElementById('confirmationModal').classList.add('active');
+        // Verifica se o jsPDF está carregado
+        function checkJsPDF() {
+            return new Promise((resolve) => {
+                if (typeof jsPDF !== 'undefined') {
+                    resolve();
+                } else {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+                    script.onload = resolve;
+                    document.head.appendChild(script);
+                }
+            });
         }
-        
-        function closeModal() {
-            document.getElementById('confirmationModal').classList.remove('active');
-        }
-        
-        // Função para limpar o formulário
-        function clearForm() {
-            document.getElementById('candidateForm').reset();
-        }
-        
-        // Função para formatar data e hora
-        function getFormattedDateTime() {
-            const now = new Date();
-            const date = now.toLocaleDateString('pt-BR');
-            const time = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            return `${date} às ${time}`;
-        }
-        
-        // Máscara para telefone
-        document.getElementById('candidatePhone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 2) {
-                value = value.substring(0, 2) + '-' + value.substring(2);
-            }
-            if (value.length > 8) {
-                value = value.substring(0, 8) + '-' + value.substring(8, 12);
-            }
-            e.target.value = value;
-        });
-        
-        // Contador de caracteres em tempo real
-        document.querySelectorAll('textarea').forEach(textarea => {
-            const counter = textarea.nextElementSibling;
-            if (counter && counter.classList.contains('char-counter')) {
-                const maxLength = parseInt(counter.getAttribute('data-maxlength')) || 5000;
+
+        // Carrega a imagem do logo
+        function loadLogo() {
+            return new Promise((resolve) => {
+                const logoImg = new Image();
+                logoImg.crossOrigin = "Anonymous";
+                logoImg.src = document.getElementById('logoImage').src;
                 
-                textarea.addEventListener('input', function() {
-                    const remaining = maxLength - this.value.length;
-                    counter.textContent = `${remaining} caracteres restantes`;
+                logoImg.onload = () => resolve(logoImg);
+                logoImg.onerror = () => resolve(null);
+            });
+        }
+
+        // Inicializa a aplicação quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', async function() {
+            await checkJsPDF();
+            
+            const { jsPDF } = window.jspdf;
+            
+            // Funções do modal
+            window.showModal = function() {
+                document.getElementById('confirmationModal').classList.add('active');
+            };
+            
+            window.closeModal = function() {
+                document.getElementById('confirmationModal').classList.remove('active');
+            };
+            
+            // Limpar formulário
+            window.clearForm = function() {
+                if (confirm('Tem certeza que deseja limpar todo o formulário? Todos os dados serão perdidos.')) {
+                    document.getElementById('candidateForm').reset();
+                    document.querySelectorAll('.char-counter').forEach(counter => {
+                        const maxLength = parseInt(counter.getAttribute('data-maxlength')) || 5000;
+                        counter.textContent = `${maxLength} caracteres restantes`;
+                        counter.classList.remove('warning', 'danger');
+                    });
+                }
+            };
+            
+            // Formatar data e hora
+            function getFormattedDateTime() {
+                const now = new Date();
+                const date = now.toLocaleDateString('pt-BR');
+                const time = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                return `${date} às ${time}`;
+            }
+            
+            // Máscara para telefone
+            document.getElementById('candidatePhone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 2) {
+                    value = value.substring(0, 2) + '-' + value.substring(2);
+                }
+                if (value.length > 8) {
+                    value = value.substring(0, 8) + '-' + value.substring(8, 12);
+                }
+                e.target.value = value;
+            });
+            
+            // Contador de caracteres
+            document.querySelectorAll('textarea').forEach(textarea => {
+                const counter = textarea.nextElementSibling;
+                if (counter && counter.classList.contains('char-counter')) {
+                    const maxLength = parseInt(counter.getAttribute('data-maxlength')) || 5000;
                     
-                    // Altera a cor conforme a quantidade de caracteres
-                    counter.classList.remove('warning', 'danger');
-                    if (remaining < 100) {
-                        counter.classList.add('danger');
-                    } else if (remaining < 300) {
-                        counter.classList.add('warning');
+                    textarea.addEventListener('input', function() {
+                        const remaining = maxLength - this.value.length;
+                        counter.textContent = `${remaining} caracteres restantes`;
+                        
+                        counter.classList.remove('warning', 'danger');
+                        if (remaining < 100) {
+                            counter.classList.add('danger');
+                        } else if (remaining < 300) {
+                            counter.classList.add('warning');
+                        }
+                    });
+                }
+            });
+            
+            // Validação do formulário
+            function validateForm() {
+                const form = document.getElementById('candidateForm');
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = 'var(--error-color)';
+                        field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        field.style.borderColor = '';
                     }
                 });
-            }
-        });
-        
-        // Validação de formulário genérica
-        function validateForm() {
-            const form = document.getElementById('candidateForm');
-            const requiredFields = form.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
+                
+                // Validar telefone
+                const phoneField = document.getElementById('candidatePhone');
+                const phoneRegex = /^\d{2}-\d{5}-\d{4}$/;
+                if (!phoneRegex.test(phoneField.value)) {
                     isValid = false;
-                    field.style.borderColor = 'var(--error-color)';
-                    field.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    field.style.borderColor = '';
+                    phoneField.style.borderColor = 'var(--error-color)';
+                    phoneField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    alert('Por favor, insira um telefone no formato 00-00000-0000');
                 }
-            });
-            
-            // Validar formato do telefone
-            const phoneField = document.getElementById('candidatePhone');
-            const phoneRegex = /^\d{2}-\d{5}-\d{4}$/;
-            if (!phoneRegex.test(phoneField.value)) {
-                isValid = false;
-                phoneField.style.borderColor = 'var(--error-color)';
-                phoneField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                alert('Por favor, insira um telefone no formato 00-00000-0000');
-            }
-            
-            // Validar e-mail
-            const emailField = document.getElementById('candidateEmail');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailField.value)) {
-                isValid = false;
-                emailField.style.borderColor = 'var(--error-color)';
-                emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                alert('Por favor, insira um e-mail válido');
-            }
-            
-            if (!isValid) {
-                alert('Por favor, preencha todos os campos obrigatórios corretamente antes de enviar.');
-            }
-            
-            return isValid;
-        }
-        
-        // Função para criar o PDF
-        function createPDF() {
-            const doc = new jsPDF();
-            
-            // Configurações de margem
-            const marginLeft = 15;
-            const marginRight = 15;
-            const maxWidth = 180; // Largura máxima do texto (210 - margens)
-            
-            let yPosition = 30;
-            
-            // Adicionar cabeçalho com logo
-            try {
-                const logoImg = new Image();
-                logoImg.src = 'https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png';
-                doc.addImage(logoImg, 'PNG', marginLeft, 10, 40, 20);
-            } catch (e) {
-                console.log('Erro ao carregar logo:', e);
-            }
-            
-            doc.setFontSize(18);
-            doc.setTextColor(18, 140, 126);
-            doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' });
-            yPosition += 15;
-            
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text('Data e hora do envio: ' + getFormattedDateTime(), 105, yPosition, { align: 'center' });
-            yPosition += 20;
-            
-            // Adicionar informações do candidato
-            doc.setFontSize(14);
-            doc.setTextColor(18, 140, 126);
-            doc.text('INFORMAÇÕES DO CANDIDATO', marginLeft, yPosition);
-            yPosition += 10;
-            
-            doc.setFontSize(11);
-            doc.setTextColor(0, 0, 0);
-            
-            const fields = [
-                { id: 'candidateName', label: 'Nome: ' },
-                { id: 'candidatePhone', label: 'Telefone: ' },
-                { id: 'candidateEmail', label: 'E-mail: ' },
-                { id: 'jobTitle', label: 'Vaga Pretendida: ' },
-                { id: 'jobCode', label: 'Código da Vaga: ', optional: true }
-            ];
-            
-            fields.forEach(field => {
-                const value = document.getElementById(field.id).value;
-                if (!field.optional || value) {
-                    doc.text(field.label + value, marginLeft, yPosition);
-                    yPosition += 7;
+                
+                // Validar e-mail
+                const emailField = document.getElementById('candidateEmail');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailField.value)) {
+                    isValid = false;
+                    emailField.style.borderColor = 'var(--error-color)';
+                    emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    alert('Por favor, insira um e-mail válido');
                 }
-            });
+                
+                if (!isValid) {
+                    alert('Por favor, preencha todos os campos obrigatórios corretamente antes de enviar.');
+                }
+                
+                return isValid;
+            }
             
-            yPosition += 10;
-            
-            // Função para adicionar texto com quebra de linha e verificação de página
-            function addTextWithBreaks(text, x, y, maxWidth, lineHeight) {
-                const lines = doc.splitTextToSize(text, maxWidth);
-                for (let i = 0; i < lines.length; i++) {
-                    if (y > 280) { // Verifica se está no final da página
-                        doc.addPage();
-                        y = 20;
+            // Função para formatar o texto para o corpo do e-mail/WhatsApp
+            function formatTextForBody() {
+                let bodyText = `*FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW*\n\n`;
+                bodyText += `*Data e hora do envio:* ${getFormattedDateTime()}\n\n`;
+                
+                // Informações do candidato
+                bodyText += `*INFORMAÇÕES DO CANDIDATO*\n`;
+                bodyText += `*Nome:* ${document.getElementById('candidateName').value}\n`;
+                bodyText += `*Telefone:* ${document.getElementById('candidatePhone').value}\n`;
+                bodyText += `*E-mail:* ${document.getElementById('candidateEmail').value}\n`;
+                bodyText += `*Vaga Pretendida:* ${document.getElementById('jobTitle').value}\n`;
+                const jobCode = document.getElementById('jobCode').value;
+                if (jobCode) {
+                    bodyText += `*Código da Vaga:* ${jobCode}\n`;
+                }
+                bodyText += '\n';
+                
+                // Partes do formulário
+                const parts = [
+                    { 
+                        title: 'PARTE 1 - COMPORTAMENTAL',
+                        questions: [
+                            { id: 'p1a', text: 'a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?' },
+                            { id: 'p1b', text: 'b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?' },
+                            { id: 'p1c', text: 'c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?' },
+                            { id: 'p1d', text: 'd. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?' },
+                            { id: 'p1e1', text: '1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta' },
+                            { id: 'p1e2', text: '2. Monte um Roteiro de atendimento para Suporte técnico' }
+                        ]
+                    },
+                    {
+                        title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
+                        questions: [
+                            { id: 'p2a', text: 'a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?' },
+                            { id: 'p2b', text: 'b. Onde o cliente aperta para efetuar disparos em massa para os clientes?' },
+                            { id: 'p2c', text: 'c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?' },
+                            { id: 'p2d', text: 'd. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?' },
+                            { id: 'p2e', text: 'e. Onde você iria para entender mais sobre o Unnichat?' },
+                            { id: 'p2f', text: 'f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?' }
+                        ]
+                    },
+                    {
+                        title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
+                        questions: [
+                            { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
+                            { id: 'p3b', text: 'b. Qual o custo médio de envio da API?' },
+                            { id: 'p3c', text: 'c. Qualquer pessoa pode ter uma conta API Oficial?' },
+                            { id: 'p3d', text: 'd. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.' }
+                        ]
                     }
-                    doc.text(lines[i], x, y);
-                    y += lineHeight;
+                ];
+                
+                // Adicionar conteúdo ao texto
+                for (const part of parts) {
+                    bodyText += `\n*${part.title}*\n\n`;
+                    
+                    for (const question of part.questions) {
+                        const answer = document.getElementById(question.id).value;
+                        bodyText += `*${question.text}*\n${answer}\n\n`;
+                    }
                 }
-                return y;
+                
+                bodyText += `\n*Este formulário foi enviado em:* ${getFormattedDateTime()}\n`;
+                bodyText += `*Por favor, confirme o recebimento deste formulário.*\n\n`;
+                bodyText += `Atenciosamente,\nEquipe Unnichat SendFlow`;
+                
+                return bodyText;
             }
             
-            // Adicionar respostas das partes 1, 2 e 3
-            const parts = [
-                { 
-                    title: 'PARTE 1 - COMPORTAMENTAL',
-                    questions: [
-                        { id: 'p1a', text: 'a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?' },
-                        { id: 'p1b', text: 'b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?' },
-                        { id: 'p1c', text: 'c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?' },
-                        { id: 'p1d', text: 'd. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?' },
-                        { id: 'p1e1', text: '1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta' },
-                        { id: 'p1e2', text: '2. Monte um Roteiro de atendimento para Suporte técnico' }
-                    ]
-                },
-                {
-                    title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
-                    questions: [
-                        { id: 'p2a', text: 'a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?' },
-                        { id: 'p2b', text: 'b. Onde o cliente aperta para efetuar disparos em massa para os clientes?' },
-                        { id: 'p2c', text: 'c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?' },
-                        { id: 'p2d', text: 'd. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?' },
-                        { id: 'p2e', text: 'e. Onde você iria para entender mais sobre o Unnichat?' },
-                        { id: 'p2f', text: 'f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?' }
-                    ]
-                },
-                {
-                    title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
-                    questions: [
-                        { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
-                        { id: 'p3b', text: 'b. Qual o custo médio de envio da API?' },
-                        { id: 'p3c', text: 'c. Qualquer pessoa pode ter uma conta API Oficial?' },
-                        { id: 'p3d', text: 'd. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.' }
-                    ]
+            // Criar PDF
+            async function createPDF() {
+                const doc = new jsPDF();
+                const marginLeft = 15;
+                const maxWidth = 180;
+                let yPosition = 30;
+                
+                // Adicionar logo
+                const logoImg = await loadLogo();
+                if (logoImg) {
+                    doc.addImage(logoImg, 'PNG', marginLeft, 10, 40, 20);
                 }
-            ];
-            
-            parts.forEach(part => {
+                
+                // Título
+                doc.setFontSize(18);
+                doc.setTextColor(18, 140, 126);
+                doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' });
+                yPosition += 15;
+                
+                // Data e hora
+                doc.setFontSize(12);
+                doc.setTextColor(0, 0, 0);
+                doc.text('Data e hora do envio: ' + getFormattedDateTime(), 105, yPosition, { align: 'center' });
+                yPosition += 20;
+                
+                // Informações do candidato
                 doc.setFontSize(14);
                 doc.setTextColor(18, 140, 126);
-                yPosition = addTextWithBreaks(part.title, marginLeft, yPosition, maxWidth, 10);
+                doc.text('INFORMAÇÕES DO CANDIDATO', marginLeft, yPosition);
+                yPosition += 10;
                 
                 doc.setFontSize(11);
                 doc.setTextColor(0, 0, 0);
                 
-                part.questions.forEach(question => {
-                    const answer = document.getElementById(question.id).value;
-                    yPosition = addTextWithBreaks(question.text, marginLeft, yPosition, maxWidth, 7);
-                    doc.setTextColor(0, 0, 255);
-                    yPosition = addTextWithBreaks(answer, marginLeft + 5, yPosition, maxWidth - 5, 7);
-                    doc.setTextColor(0, 0, 0);
-                    yPosition += 5;
+                const fields = [
+                    { id: 'candidateName', label: 'Nome: ' },
+                    { id: 'candidatePhone', label: 'Telefone: ' },
+                    { id: 'candidateEmail', label: 'E-mail: ' },
+                    { id: 'jobTitle', label: 'Vaga Pretendida: ' },
+                    { id: 'jobCode', label: 'Código da Vaga: ', optional: true }
+                ];
+                
+                fields.forEach(field => {
+                    const value = document.getElementById(field.id).value;
+                    if (!field.optional || value) {
+                        doc.text(field.label + value, marginLeft, yPosition);
+                        yPosition += 7;
+                    }
                 });
                 
                 yPosition += 10;
-            });
-            
-            // Adicionar rodapé com data e hora
-            doc.setFontSize(10);
-            doc.setTextColor(100, 100, 100);
-            doc.text('Enviado em: ' + getFormattedDateTime(), marginLeft, 290, { align: 'left' });
-            
-            return doc;
-        }
-        
-        // Função para criar corpo do e-mail
-        function createEmailBody() {
-            const candidateName = document.getElementById('candidateName').value;
-            const candidatePhone = document.getElementById('candidatePhone').value;
-            const candidateEmail = document.getElementById('candidateEmail').value;
-            const jobTitle = document.getElementById('jobTitle').value;
-            const jobCode = document.getElementById('jobCode').value;
-            
-            let emailBody = `FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW\n\n`;
-            emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
-            emailBody += `INFORMAÇÕES DO CANDIDATO\n`;
-            emailBody += `• Nome: ${candidateName}\n`;
-            emailBody += `• Telefone: ${candidatePhone}\n`;
-            emailBody += `• E-mail: ${candidateEmail}\n`;
-            emailBody += `• Vaga Pretendida: ${jobTitle}\n`;
-            if (jobCode) emailBody += `• Código da Vaga: ${jobCode}\n`;
-            emailBody += `\n`;
-            
-            // Adicionar respostas das partes
-            const parts = [
-                { 
-                    title: 'PARTE 1 - COMPORTAMENTAL',
-                    questions: [
-                        { id: 'p1a', text: 'a. Um cliente trouxe uma dúvida que você não tem certeza absoluta da resposta. Qual sua conduta?' },
-                        { id: 'p1b', text: 'b. Cliente pede que você execute uma ação para ele no sistema. O que faz?' },
-                        { id: 'p1c', text: 'c. Surgiu um problema que aparenta ser um bug e você não sabe contornar. O que faz?' },
-                        { id: 'p1d', text: 'd. Cliente acabou de assinar a ferramenta. Qual sua conduta inicial?' },
-                        { id: 'p1e1', text: '1. Roteiro para Dúvida operacional:' },
-                        { id: 'p1e2', text: '2. Roteiro para Suporte técnico:' }
-                    ]
-                },
-                {
-                    title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
-                    questions: [
-                        { id: 'p2a', text: 'a. Onde conectar uma nova conta de API OFICIAL?' },
-                        { id: 'p2b', text: 'b. Onde efetuar disparos em massa?' },
-                        { id: 'p2c', text: 'c. Onde adicionar acessos de equipe?' },
-                        { id: 'p2d', text: 'd. É possível segmentar e organizar os leads?' },
-                        { id: 'p2e', text: 'e. Onde entender mais sobre o Unnichat?' },
-                        { id: 'p2f', text: 'f. Quais funcionalidades você identifica?' }
-                    ]
-                },
-                {
-                    title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
-                    questions: [
-                        { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
-                        { id: 'p3b', text: 'b. Custo médio de envio da API?' },
-                        { id: 'p3c', text: 'c. Qualquer pessoa pode ter conta API?' },
-                        { id: 'p3d', text: 'd. Sua experiência com API Oficial:' }
-                    ]
-                }
-            ];
-            
-            parts.forEach(part => {
-                emailBody += `${part.title}\n\n`;
                 
-                part.questions.forEach(question => {
-                    const answer = document.getElementById(question.id).value;
-                    emailBody += `${question.text}\n${answer}\n\n`;
-                });
-            });
-            
-            emailBody += `\nUnnichat SendFlow agradece seu contato!`;
-            
-            return emailBody;
-        }
-        
-        // Evento de envio por e-mail
-        document.getElementById('sendEmail').addEventListener('click', function() {
-            if (!validateForm()) return;
-            
-            // Criar PDF
-            const doc = createPDF();
-            const pdfBlob = doc.output('blob');
-            const pdfUrl = URL.createObjectURL(pdfBlob);
-            window.open(pdfUrl, '_blank');
-            
-            // Criar e abrir cliente de e-mail
-            const candidateName = document.getElementById('candidateName').value;
-            const jobTitle = document.getElementById('jobTitle').value;
-            const emailBody = createEmailBody();
-            
-            window.location.href = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura para ${jobTitle} - ${candidateName}&body=${encodeURIComponent(emailBody)}`;
-            
-            // Mostrar modal de confirmação
-            showModal();
-            
-            // Limpar formulário após 1 segundo
-            setTimeout(clearForm, 1000);
-        });
-        
-        // Evento de envio por WhatsApp
-        document.getElementById('sendWhatsApp').addEventListener('click', function() {
-            if (!validateForm()) return;
-            
-            // Obter valores dos campos
-            const candidateName = document.getElementById('candidateName').value;
-            const candidatePhone = document.getElementById('candidatePhone').value;
-            const candidateEmail = document.getElementById('candidateEmail').value;
-            const jobTitle = document.getElementById('jobTitle').value;
-            const jobCode = document.getElementById('jobCode').value;
-            
-            // Criar mensagem para WhatsApp com formatação
-            let whatsappMessage = `*FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW*\n\n`;
-            whatsappMessage += `*Enviado em:* ${getFormattedDateTime()}\n\n`;
-            whatsappMessage += `*INFORMAÇÕES DO CANDIDATO*\n`;
-            whatsappMessage += `• *Nome:* ${candidateName}\n`;
-            whatsappMessage += `• *Telefone:* ${candidatePhone}\n`;
-            whatsappMessage += `• *E-mail:* ${candidateEmail}\n`;
-            whatsappMessage += `• *Vaga Pretendida:* ${jobTitle}\n`;
-            if (jobCode) whatsappMessage += `• *Código da Vaga:* ${jobCode}\n`;
-            whatsappMessage += `\n`;
-            
-            // Adicionar respostas das partes
-            const parts = [
-                { 
-                    title: 'PARTE 1 - COMPORTAMENTAL',
-                    questions: [
-                        { id: 'p1a', text: 'a. Um cliente trouxe uma dúvida que você não tem certeza absoluta da resposta. Qual sua conduta?' },
-                        { id: 'p1b', text: 'b. Cliente pede que você execute uma ação para ele no sistema. O que faz?' },
-                        { id: 'p1c', text: 'c. Surgiu um problema que aparenta ser um bug e você não sabe contornar. O que faz?' },
-                        { id: 'p1d', text: 'd. Cliente acabou de assinar a ferramenta. Qual sua conduta inicial?' },
-                        { id: 'p1e1', text: '1. Roteiro para Dúvida operacional:' },
-                        { id: 'p1e2', text: '2. Roteiro para Suporte técnico:' }
-                    ]
-                },
-                {
-                    title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
-                    questions: [
-                        { id: 'p2a', text: 'a. Onde conectar uma nova conta de API OFICIAL?' },
-                        { id: 'p2b', text: 'b. Onde efetuar disparos em massa?' },
-                        { id: 'p2c', text: 'c. Onde adicionar acessos de equipe?' },
-                        { id: 'p2d', text: 'd. É possível segmentar e organizar os leads?' },
-                        { id: 'p2e', text: 'e. Onde entender mais sobre o Unnichat?' },
-                        { id: 'p2f', text: 'f. Quais funcionalidades você identifica?' }
-                    ]
-                },
-                {
-                    title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
-                    questions: [
-                        { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
-                        { id: 'p3b', text: 'b. Custo médio de envio da API?' },
-                        { id: 'p3c', text: 'c. Qualquer pessoa pode ter conta API?' },
-                        { id: 'p3d', text: 'd. Sua experiência com API Oficial:' }
-                    ]
+                // Função para adicionar texto com quebras
+                function addTextWithBreaks(text, x, y, maxWidth, lineHeight) {
+                    const lines = doc.splitTextToSize(text, maxWidth);
+                    for (let i = 0; i < lines.length; i++) {
+                        if (y > 280) {
+                            doc.addPage();
+                            y = 20;
+                        }
+                        doc.text(lines[i], x, y);
+                        y += lineHeight;
+                    }
+                    return y;
                 }
-            ];
-            
-            parts.forEach(part => {
-                whatsappMessage += `*${part.title}*\n\n`;
                 
-                part.questions.forEach(question => {
-                    const answer = document.getElementById(question.id).value;
-                    whatsappMessage += `${question.text}\n${answer}\n\n`;
-                });
+                // Partes do formulário
+                const parts = [
+                    { 
+                        title: 'PARTE 1 - COMPORTAMENTAL',
+                        questions: [
+                            { id: 'p1a', text: 'a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?' },
+                            { id: 'p1b', text: 'b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?' },
+                            { id: 'p1c', text: 'c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?' },
+                            { id: 'p1d', text: 'd. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?' },
+                            { id: 'p1e1', text: '1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta' },
+                            { id: 'p1e2', text: '2. Monte um Roteiro de atendimento para Suporte técnico' }
+                        ]
+                    },
+                    {
+                        title: 'PARTE 2 - CONHECIMENTO DO PRODUTO',
+                        questions: [
+                            { id: 'p2a', text: 'a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?' },
+                            { id: 'p2b', text: 'b. Onde o cliente aperta para efetuar disparos em massa para os clientes?' },
+                            { id: 'p2c', text: 'c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?' },
+                            { id: 'p2d', text: 'd. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?' },
+                            { id: 'p2e', text: 'e. Onde você iria para entender mais sobre o Unnichat?' },
+                            { id: 'p2f', text: 'f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?' }
+                        ]
+                    },
+                    {
+                        title: 'PARTE 3 - CONHECIMENTOS ESPECÍFICOS',
+                        questions: [
+                            { id: 'p3a', text: 'a. O que é API Oficial do WhatsApp?' },
+                            { id: 'p3b', text: 'b. Qual o custo médio de envio da API?' },
+                            { id: 'p3c', text: 'c. Qualquer pessoa pode ter uma conta API Oficial?' },
+                            { id: 'p3d', text: 'd. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.' }
+                        ]
+                    }
+                ];
+                
+                // Adicionar conteúdo ao PDF
+                for (const part of parts) {
+                    doc.setFontSize(14);
+                    doc.setTextColor(18, 140, 126);
+                    yPosition = addTextWithBreaks(part.title, marginLeft, yPosition, maxWidth, 10);
+                    
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    
+                    for (const question of part.questions) {
+                        const answer = document.getElementById(question.id).value;
+                        yPosition = addTextWithBreaks(question.text, marginLeft, yPosition, maxWidth, 7);
+                        doc.setTextColor(0, 0, 255);
+                        yPosition = addTextWithBreaks(answer, marginLeft + 5, yPosition, maxWidth - 5, 7);
+                        doc.setTextColor(0, 0, 0);
+                        yPosition += 5;
+                    }
+                    
+                    yPosition += 10;
+                }
+                
+                // Rodapé com links
+                doc.setFontSize(10);
+                
+                // Link de e-mail
+                doc.setTextColor(18, 140, 126);
+                doc.textWithLink('Enviar para: shi@sendflow.com.br (com cópia para luiz@sendflow.pro)', 
+                                marginLeft, 285, {
+                                    url: 'mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro',
+                                    align: 'left'
+                                });
+                
+                // Link do WhatsApp
+                doc.setTextColor(37, 211, 102);
+                doc.textWithLink('Enviar para WhatsApp: +55 11 99650-4486', 
+                                marginLeft, 290, {
+                                    url: 'https://wa.me/5511996504486',
+                                    align: 'left'
+                                });
+                
+                // Data e hora
+                doc.setTextColor(100, 100, 100);
+                doc.text('Enviado em: ' + getFormattedDateTime(), marginLeft, 295, { align: 'left' });
+                
+                return doc;
+            }
+            
+            // Enviar por e-mail
+            document.getElementById('sendEmail').addEventListener('click', async function() {
+                if (!validateForm()) return;
+                
+                try {
+                    const doc = await createPDF();
+                    const pdfBlob = doc.output('blob');
+                    const pdfUrl = URL.createObjectURL(pdfBlob);
+                    
+                    // Abrir PDF em nova aba
+                    window.open(pdfUrl, '_blank');
+                    
+                    // Criar corpo do e-mail com todo o conteúdo
+                    const emailBody = formatTextForBody();
+                    
+                    // Abrir cliente de e-mail
+                    const candidateName = document.getElementById('candidateName').value;
+                    const jobTitle = document.getElementById('jobTitle').value;
+                    window.location.href = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura para ${jobTitle} - ${candidateName}&body=${encodeURIComponent(emailBody)}`;
+                    
+                    showModal();
+                    setTimeout(clearForm, 1000);
+                } catch (error) {
+                    console.error('Erro ao enviar por e-mail:', error);
+                    alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.');
+                }
             });
             
-            whatsappMessage += `\n*Unnichat SendFlow agradece seu contato!*`;
+            // Enviar por WhatsApp
+            document.getElementById('sendWhatsApp').addEventListener('click', async function() {
+                if (!validateForm()) return;
+                
+                try {
+                    const doc = await createPDF();
+                    const pdfBlob = doc.output('blob');
+                    const pdfUrl = URL.createObjectURL(pdfBlob);
+                    
+                    // Criar link para download do PDF
+                    const tempLink = document.createElement('a');
+                    tempLink.href = pdfUrl;
+                    tempLink.download = 'Formulario_Unnichat_' + document.getElementById('candidateName').value.replace(/\s+/g, '_') + '.pdf';
+                    
+                    // Criar mensagem para WhatsApp com todo o conteúdo
+                    const whatsappMessage = formatTextForBody();
+                    
+                    // Disparar download do PDF
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    
+                    // Abrir WhatsApp com o conteúdo completo
+                    window.open(`https://wa.me/5511996504486?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+                    
+                    showModal();
+                    setTimeout(clearForm, 1000);
+                } catch (error) {
+                    console.error('Erro ao enviar por WhatsApp:', error);
+                    alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.');
+                }
+            });
             
-            // Codificar mensagem para URL
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            
-            // Abrir WhatsApp com a mensagem
-            window.open(`https://wa.me/5511996504486?text=${encodedMessage}`, '_blank');
-            
-            // Mostrar modal de confirmação
-            showModal();
-            
-            // Limpar formulário após 1 segundo
-            setTimeout(clearForm, 1000);
+            // Limpar formulário
+            document.getElementById('clearForm').addEventListener('click', clearForm);
         });
     </script>
 </body>
