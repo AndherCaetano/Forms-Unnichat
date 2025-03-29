@@ -877,7 +877,7 @@
                            marginLeft, 285, 
                            { url: emailLink, maxWidth: maxWidth });
             
-            doc.text('* Importante: Anexe este PDF ao enviar o email', marginLeft, 290);
+            doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 290);
             doc.text('Enviado em: ' + getFormattedDateTime(), marginLeft, 295, { align: 'left' });
             
             return doc;
