@@ -747,6 +747,7 @@
                 console.log('Erro ao carregar logo:', e);
                 // Fallback text if logo fails to load
                 doc.setFontSize(12);
+                doc.text('Projeto B, marginLeft, 20);
                 doc.text('Unnichat SendFlow', marginLeft, 20);
             }
             
