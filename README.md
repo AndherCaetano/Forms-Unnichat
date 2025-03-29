@@ -168,6 +168,23 @@
             box-shadow: 0 0 0 3px rgba(18, 140, 126, 0.15);
         }
         
+        /* Contador de caracteres */
+        .char-counter {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        .char-counter.warning {
+            color: orange;
+        }
+        
+        .char-counter.danger {
+            color: var(--error-color);
+            font-weight: bold;
+        }
+        
         .form-row {
             display: flex;
             flex-wrap: wrap;
@@ -388,7 +405,7 @@
                         
                         <div class="form-group question">
                             <label for="jobTitle" class="required-field">Nome da vaga pretendida: ✌🏽</label>
-                            <input type="text" id="jobTitle" name="jobTitle" maxlength="30" required placeholder="Digite o nome da vaga (máx. 30 caracteres)">
+                            <input type="text" id="jobTitle" name="jobTitle" maxlength="50" required placeholder="Digite o nome da vaga (máx. 50 caracteres)">
                         </div>
                     </div>
                     
@@ -407,32 +424,38 @@
                     
                     <div class="question">
                         <label for="p1a" class="required-field">a. Um cliente trouxe a você uma dúvida a qual você não tem certeza absoluta da resposta. Qual é a sua conduta nesse caso?</label>
-                        <textarea id="p1a" name="p1a" required></textarea>
+                        <textarea id="p1a" name="p1a" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p1b" class="required-field">b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?</label>
-                        <textarea id="p1b" name="p1b" required></textarea>
+                        <textarea id="p1b" name="p1b" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p1c" class="required-field">c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?</label>
-                        <textarea id="p1c" name="p1c" required></textarea>
+                        <textarea id="p1c" name="p1c" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p1d" class="required-field">d. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?</label>
-                        <textarea id="p1d" name="p1d" required></textarea>
+                        <textarea id="p1d" name="p1d" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p1e1" class="required-field">1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta</label>
-                        <textarea id="p1e1" name="p1e1" required></textarea>
+                        <textarea id="p1e1" name="p1e1" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p1e2" class="required-field">2. Monte um Roteiro de atendimento para Suporte técnico</label>
-                        <textarea id="p1e2" name="p1e2" required></textarea>
+                        <textarea id="p1e2" name="p1e2" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                 </div>
                 
@@ -445,32 +468,38 @@
                     
                     <div class="question">
                         <label for="p2a" class="required-field">a. Onde o cliente aperta para conectar uma nova conta de API OFICIAL?</label>
-                        <textarea id="p2a" name="p2a" required></textarea>
+                        <textarea id="p2a" name="p2a" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p2b" class="required-field">b. Onde o cliente aperta para efetuar disparos em massa para os clientes?</label>
-                        <textarea id="p2b" name="p2b" required></textarea>
+                        <textarea id="p2b" name="p2b" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p2c" class="required-field">c. O cliente deseja adicionar acessos de equipe em sua conta. Onde ele deve clicar?</label>
-                        <textarea id="p2c" name="p2c" required></textarea>
+                        <textarea id="p2c" name="p2c" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p2d" class="required-field">d. O Cliente pergunta se é possível segmentar e organizar os leads para atendimento. O que você responderia?</label>
-                        <textarea id="p2d" name="p2d" required></textarea>
+                        <textarea id="p2d" name="p2d" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p2e" class="required-field">e. Onde você iria para entender mais sobre o Unnichat?</label>
-                        <textarea id="p2e" name="p2e" required></textarea>
+                        <textarea id="p2e" name="p2e" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p2f" class="required-field">f. Ao analisar essa tela, quais funcionalidades você imagina que o Unnichat tem?</label>
-                        <textarea id="p2f" name="p2f" required></textarea>
+                        <textarea id="p2f" name="p2f" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                 </div>
                 
@@ -481,22 +510,26 @@
                     
                     <div class="question">
                         <label for="p3a" class="required-field">a. O que é API Oficial do WhatsApp?</label>
-                        <textarea id="p3a" name="p3a" required></textarea>
+                        <textarea id="p3a" name="p3a" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p3b" class="required-field">b. Qual o custo médio de envio da API?</label>
-                        <textarea id="p3b" name="p3b" required></textarea>
+                        <textarea id="p3b" name="p3b" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p3c" class="required-field">c. Qualquer pessoa pode ter uma conta API Oficial?</label>
-                        <textarea id="p3c" name="p3c" required></textarea>
+                        <textarea id="p3c" name="p3c" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
                         <label for="p3d" class="required-field">d. Conte um pouco sobre sua experiência com API Oficial de WhatsApp.</label>
-                        <textarea id="p3d" name="p3d" required></textarea>
+                        <textarea id="p3d" name="p3d" required maxlength="5000"></textarea>
+                        <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                 </div>
                 
@@ -561,6 +594,27 @@
                 value = value.substring(0, 8) + '-' + value.substring(8, 12);
             }
             e.target.value = value;
+        });
+        
+        // Contador de caracteres em tempo real
+        document.querySelectorAll('textarea').forEach(textarea => {
+            const counter = textarea.nextElementSibling;
+            if (counter && counter.classList.contains('char-counter')) {
+                const maxLength = parseInt(counter.getAttribute('data-maxlength')) || 5000;
+                
+                textarea.addEventListener('input', function() {
+                    const remaining = maxLength - this.value.length;
+                    counter.textContent = `${remaining} caracteres restantes`;
+                    
+                    // Altera a cor conforme a quantidade de caracteres
+                    counter.classList.remove('warning', 'danger');
+                    if (remaining < 100) {
+                        counter.classList.add('danger');
+                    } else if (remaining < 300) {
+                        counter.classList.add('warning');
+                    }
+                });
+            }
         });
         
         // Validação de formulário genérica
