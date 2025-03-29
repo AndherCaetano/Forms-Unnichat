@@ -594,7 +594,7 @@
                     <a href="mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro">Enviar para o email: shi@sendflow.com.br, com cópia para luiz@sendflow.pro</a>
                 </div>
                 <button type="button" class="btn-clear" onclick="clearForm()">Limpar Formulário</button>
-                <br>
+                <p><br>
                 <p>Formulário gerado em: <span id="generatedDate"></span></p>
             </div>
         </div>
