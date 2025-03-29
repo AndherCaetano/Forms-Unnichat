@@ -549,7 +549,7 @@
             return new Promise((resolve) => {
                 const logoImg = new Image();
                 logoImg.crossOrigin = "Anonymous";
-                logoImg.src = document.getElementById('logoImage').src;
+                logoImg.src = "https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-24-as-23.14.04.png";
                 
                 logoImg.onload = () => resolve(logoImg);
                 logoImg.onerror = () => resolve(null);
@@ -883,17 +883,44 @@
                 return doc;
             }
             
-            // Enviar por e-mail
-            document.getElementById('sendEmail').addEventListener('click', async function() {
-                if (!validateForm()) return;
-                
+            // Função para abrir PDF em nova aba
+            async function openPDFInNewTab() {
                 try {
                     const doc = await createPDF();
                     const pdfBlob = doc.output('blob');
                     const pdfUrl = URL.createObjectURL(pdfBlob);
                     
                     // Abrir PDF em nova aba
-                    window.open(pdfUrl, '_blank');
+                    const newWindow = window.open(pdfUrl, '_blank');
+                    
+                    // Se o navegador bloquear a abertura, oferecer download
+                    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                        const tempLink = document.createElement('a');
+                        tempLink.href = pdfUrl;
+                        tempLink.download = 'Formulario_Unnichat_' + document.getElementById('candidateName').value.replace(/\s+/g, '_') + '.pdf';
+                        document.body.appendChild(tempLink);
+                        tempLink.click();
+                        document.body.removeChild(tempLink);
+                        
+                        return false;
+                    }
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao gerar PDF:', error);
+                    alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.');
+                    return false;
+                }
+            }
+            
+            // Enviar por e-mail
+            document.getElementById('sendEmail').addEventListener('click', async function() {
+                if (!validateForm()) return;
+                
+                try {
+                    // Abrir PDF em nova aba
+                    const pdfSuccess = await openPDFInNewTab();
+                    if (!pdfSuccess) return;
                     
                     // Criar corpo do e-mail com todo o conteúdo
                     const emailBody = formatTextForBody();
@@ -907,7 +934,7 @@
                     setTimeout(clearForm, 1000);
                 } catch (error) {
                     console.error('Erro ao enviar por e-mail:', error);
-                    alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.');
+                    alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
                 }
             });
             
@@ -916,31 +943,35 @@
                 if (!validateForm()) return;
                 
                 try {
-                    const doc = await createPDF();
-                    const pdfBlob = doc.output('blob');
-                    const pdfUrl = URL.createObjectURL(pdfBlob);
-                    
-                    // Criar link para download do PDF
-                    const tempLink = document.createElement('a');
-                    tempLink.href = pdfUrl;
-                    tempLink.download = 'Formulario_Unnichat_' + document.getElementById('candidateName').value.replace(/\s+/g, '_') + '.pdf';
-                    
                     // Criar mensagem para WhatsApp com todo o conteúdo
                     const whatsappMessage = formatTextForBody();
                     
-                    // Disparar download do PDF
-                    document.body.appendChild(tempLink);
-                    tempLink.click();
-                    document.body.removeChild(tempLink);
+                    // Abrir WhatsApp com o número específico e o conteúdo completo
+                    const phoneNumber = "5511996504486"; // Número no formato internacional sem caracteres especiais
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
                     
-                    // Abrir WhatsApp com o conteúdo completo
-                    window.open(`https://wa.me/5511996504486?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+                    // Abrir o WhatsApp em uma nova janela/aba
+                    const whatsappWindow = window.open(whatsappUrl, '_blank');
+                    
+                    // Depois de abrir o WhatsApp, gerar e abrir o PDF em outra aba
+                    setTimeout(async () => {
+                        try {
+                            const pdfSuccess = await openPDFInNewTab();
+                            if (!pdfSuccess) {
+                                alert('O PDF foi baixado automaticamente. Verifique sua pasta de downloads.');
+                            }
+                        } catch (error) {
+                            console.error('Erro ao gerar PDF:', error);
+                            alert('Ocorreu um erro ao gerar o PDF. Por favor, tente o botão "Enviar por E-mail" para obter o PDF.');
+                        }
+                    }, 500); // Pequeno delay para garantir que a janela do WhatsApp abra primeiro
                     
                     showModal();
                     setTimeout(clearForm, 1000);
                 } catch (error) {
                     console.error('Erro ao enviar por WhatsApp:', error);
-                    alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.');
+                    alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
                 }
             });
             
