@@ -736,25 +736,27 @@
             const marginRight = 15;
             const maxWidth = 180; // Largura máxima do texto (210 - margens)
             
-            let yPosition = 30;
+            let yPosition = 20; // Posição inicial mais alta para acomodar a logo
             
-            // Adicionar cabeçalho com logo
-            const logoUrl = 'https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-29-as-10.26.42.png';
+            // Adicionar logo no cabeçalho do PDF (a logo que você especificou)
+            const logoUrl = 'https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-29-as-20.26.52.png';
             try {
-                // Add logo with error handling
-                doc.addImage(logoUrl, 'PNG', marginLeft, 10, 40, 20);
+                // Adiciona a logo com tratamento de erro
+                doc.addImage(logoUrl, 'PNG', marginLeft, 10, 40, 20); // Ajuste os valores de width (40) e height (20) conforme necessário
+                yPosition += 25; // Aumenta a posição Y para deixar espaço para a logo
             } catch (e) {
                 console.log('Erro ao carregar logo:', e);
-                // Fallback text if logo fails to load
+                // Texto alternativo se a logo não carregar
                 doc.setFontSize(12);
-                doc.text('Projeto B, marginLeft, 20);
-                doc.text('Unnichat SendFlow', marginLeft, 20);
+                doc.text('Unnichat SendFlow', marginLeft, 15);
+                yPosition += 15;
             }
             
+            // Adicionar título do formulário abaixo da logo
             doc.setFontSize(18);
             doc.setTextColor(18, 140, 126);
             doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' });
-            yPosition += 15;
+            yPosition += 10;
             
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
