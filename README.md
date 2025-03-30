@@ -852,7 +852,7 @@
             // 3. Adicionar título principal
             doc.setFontSize(18);
             doc.setTextColor(18, 140, 126);
-            doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' });
+            doc.text('Testes Práticos e Habilidades Unnichat-SendFlow', 105, yPosition, { align: 'center' });
             yPosition += 10;
             
             doc.setFontSize(12);
@@ -993,7 +993,7 @@
             const jobTitle = document.getElementById('jobTitle').value;
             const jobCode = document.getElementById('jobCode').value;
             
-            let emailBody = `FORMULÁRIO DE QUESTÕES UNNICHAT-SENDFLOW\n\n`;
+            let emailBody = `TESTE PRÁTICO DE HABILIDADES UNNICHAT-SENDFLOW\n\n`;
             emailBody += `Enviado em: ${getFormattedDateTime()}\n\n`;
             emailBody += `INFORMAÇÕES DO CANDIDATO\n`;
             emailBody += `• Nome: ${candidateName}\n`;
