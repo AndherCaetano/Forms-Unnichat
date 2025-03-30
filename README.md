@@ -755,7 +755,7 @@
                 console.log('Erro ao carregar logo:', e);
                 doc.setFontSize(12);
                 doc.text('Unnichat SendFlow', marginLeft, yPosition);
-                doc.setFont(undefined, 'bold'); // Negrito
+                doc.setFont(undefined, 'normal'); // Negrito
                 yPosition += 15;
             }
 
