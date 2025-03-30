@@ -883,8 +883,8 @@
             const emailLink = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura%20para%20${encodeURIComponent(jobTitle)}%20-%20${encodeURIComponent(candidateName)}&body=Por%20favor,%20anexe%20este%20PDF%20ao%20seu%20email.%0A%0AAtenciosamente,%0A${encodeURIComponent(candidateName)}`;
 
             // Adicionar instruções e link clicável (com formatação)
-doc.setTextColor(0, 0, 255); // Cor azul (RGB)
-doc.textWithLink('Clique aqui para enviar por email: shi@sendflow.com.br (cópia para luiz@sendflow.pro)', 
+                doc.setTextColor(0, 0, 255); // Cor azul (RGB)
+                doc.textWithLink('Clique aqui para enviar por email: shi@sendflow.com.br (cópia para luiz@sendflow.pro)', 
                marginLeft, 285, 
                {
                  url: emailLink,
@@ -892,11 +892,11 @@ doc.textWithLink('Clique aqui para enviar por email: shi@sendflow.com.br (cópia
                  underline: true // Adiciona sublinhado
                });
 
-// Resetar formatação e adicionar quebra dupla
-doc.setTextColor(0, 0, 0); // Volta cor preta
-doc.text('', marginLeft, 290); // Linha vazia (1ª quebra)
-doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 295); // 2ª quebra + texto
-doc.text('Criado em: ' + getFormattedDateTime(), marginLeft, 300); // Posição ajustada
+                // Resetar formatação e adicionar quebra dupla
+                doc.setTextColor(0, 0, 0); // Volta cor preta
+                doc.text('', marginLeft, 290); // Linha vazia (1ª quebra)
+                doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 295); // 2ª quebra + texto
+                doc.text('Criado em: ' + getFormattedDateTime(), marginLeft, 300); // Posição ajustada
             
             return doc;
         }
