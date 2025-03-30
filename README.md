@@ -743,7 +743,7 @@
             doc.setTextColor(50, 50, 50); // Cor escura
             doc.setFont(undefined, 'italic'); // Define o estilo como itálico
             doc.text("Projeto B", marginLeft, yPosition); // Alinhado à esquerda
-            doc.setFont(undefined, 'bold'); // Negrito
+            doc.setFont(undefined, 'normal'); // Negrito
             yPosition += 8; // Espaçamento após o texto
 
             // 2. Adicionar a logo
