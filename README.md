@@ -741,7 +741,9 @@
             // 1. Adicionar "Projeto B" no topo do PDF
             doc.setFontSize(12);
             doc.setTextColor(50, 50, 50); // Cor escura
+            doc.setFont(undefined, 'italic'); // Define o estilo como itálico
             doc.text("Projeto B", marginLeft, yPosition); // Alinhado à esquerda
+            doc.setFont(undefined, 'bold'); // Negrito
             yPosition += 8; // Espaçamento após o texto
 
             // 2. Adicionar a logo
@@ -753,6 +755,7 @@
                 console.log('Erro ao carregar logo:', e);
                 doc.setFontSize(12);
                 doc.text('Unnichat SendFlow', marginLeft, yPosition);
+                doc.setFont(undefined, 'bold'); // Negrito
                 yPosition += 15;
             }
 
