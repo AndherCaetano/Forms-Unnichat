@@ -54,6 +54,7 @@
             overflow-x: hidden;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         
         .content-wrapper {
@@ -328,13 +329,14 @@
         }
         
         .footer a {
-            color: var(--secondary-color);
+            color: #0066cc;
             text-decoration: none;
             font-weight: 500;
         }
         
         .footer a:hover {
             text-decoration: underline;
+            color: #004499;
         }
         
         .btn-clear {
@@ -347,6 +349,52 @@
         .btn-clear:hover {
             background-color: var(--light-gray);
             transform: none;
+        }
+        
+        /* Botão de scroll */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .scroll-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .scroll-top i {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Campos desabilitados inicialmente */
+        .question input:not(#candidateName):not(#candidatePhone):not(#candidateEmail):not(#jobTitle),
+        .question textarea {
+            pointer-events: none;
+            opacity: 0.6;
+            background-color: var(--light-gray);
+        }
+        
+        /* Campos habilitados quando formulário estiver pronto */
+        .form-ready .question input,
+        .form-ready .question textarea {
+            pointer-events: auto;
+            opacity: 1;
+            background-color: var(--white);
         }
         
         /* ===== MEDIA QUERIES ===== */
@@ -372,6 +420,13 @@
                 flex-direction: column;
                 gap: 10px;
             }
+            
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
         }
         
         @media (min-width: 600px) {
@@ -391,7 +446,7 @@
         }
         
         @media print {
-            .footer, .btn-clear {
+            .footer, .btn-clear, .scroll-top {
                 display: none;
             }
         }
@@ -405,6 +460,8 @@
             }
         }
     </style>
+    <!-- Ícones Font Awesome para a seta -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -590,13 +647,19 @@
             <!-- Rodapé com links e botão Limpar -->
             <div class="footer">
                 <div class="footer-links">
-                    <a href="mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro">Enviar para o email: shi@sendflow.com.br, com cópia para luiz@sendflow.pro</a>
+                    <br><br>
+                    <a href="mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro">Clique aqui para enviar por e-mail: shi@sendflow.com.br (com cópia para luiz@sendflow.pro)</a>
                 </div>
                 <button type="button" class="btn-clear" onclick="clearForm()">Limpar Formulário</button>
                 <p>Formulário gerado em: <span id="generatedDate"></span></p>
             </div>
         </div>
     </div>
+
+    <!-- Botão de scroll -->
+    <button class="scroll-top" id="scrollTop" title="Ir para o topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Modal de confirmação -->
     <div id="confirmationModal" class="modal">
@@ -634,6 +697,16 @@
                     counter.textContent = `${maxLength} caracteres restantes`;
                     counter.classList.remove('warning', 'danger');
                 });
+                
+                // Desabilitar campos novamente
+                document.querySelectorAll('.question input:not(#candidateName):not(#candidatePhone):not(#candidateEmail):not(#jobTitle), .question textarea').forEach(field => {
+                    field.style.pointerEvents = 'none';
+                    field.style.opacity = '0.6';
+                    field.style.backgroundColor = 'var(--light-gray)';
+                });
+                
+                // Remover classe de formulário pronto
+                document.getElementById('candidateForm').classList.remove('form-ready');
                 
                 // Show confirmation
                 alert('Formulário limpo com sucesso!');
@@ -726,6 +799,56 @@
             
             return isValid;
         }
+        
+        // Habilitar campos quando informações básicas forem preenchidas
+        function checkBasicFields() {
+            const name = document.getElementById('candidateName').value.trim();
+            const phone = document.getElementById('candidatePhone').value.trim();
+            const email = document.getElementById('candidateEmail').value.trim();
+            const job = document.getElementById('jobTitle').value.trim();
+            
+            const allFilled = name && phone && email && job;
+            
+            if (allFilled) {
+                document.getElementById('candidateForm').classList.add('form-ready');
+            } else {
+                document.getElementById('candidateForm').classList.remove('form-ready');
+            }
+        }
+        
+        // Monitorar campos básicos
+        document.getElementById('candidateName').addEventListener('input', checkBasicFields);
+        document.getElementById('candidatePhone').addEventListener('input', checkBasicFields);
+        document.getElementById('candidateEmail').addEventListener('input', checkBasicFields);
+        document.getElementById('jobTitle').addEventListener('input', checkBasicFields);
+        
+        // Botão de scroll
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.display = 'flex';
+                scrollTopBtn.querySelector('i').className = 'fas fa-arrow-up';
+                scrollTopBtn.setAttribute('title', 'Ir para o topo');
+            } else {
+                scrollTopBtn.querySelector('i').className = 'fas fa-arrow-down';
+                scrollTopBtn.setAttribute('title', 'Descer ligeiramente');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            if (window.pageYOffset > 300) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.scrollTo({
+                    top: 350,
+                    behavior: 'smooth'
+                });
+            }
+        });
         
         // Função para criar o PDF
         function createPDF() {
@@ -882,21 +1005,13 @@
             const jobTitle = document.getElementById('jobTitle').value;
             const emailLink = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura%20para%20${encodeURIComponent(jobTitle)}%20-%20${encodeURIComponent(candidateName)}&body=Por%20favor,%20anexe%20este%20PDF%20ao%20seu%20email.%0A%0AAtenciosamente,%0A${encodeURIComponent(candidateName)}`;
 
-            // Adicionar instruções e link clicável (com formatação)
-                doc.setTextColor(0, 0, 255); // Cor azul (RGB)
-                doc.textWithLink('Clique aqui para enviar por email: shi@sendflow.com.br (cópia para luiz@sendflow.pro)', 
-               marginLeft, 285, 
-               {
-                 url: emailLink,
-                 maxWidth: maxWidth,
-                 underline: true // Adiciona sublinhado
-               });
-
-                // Resetar formatação e adicionar quebra dupla
-                doc.setTextColor(0, 0, 0); // Volta cor preta
-                doc.text('', marginLeft, 290); // Linha vazia (1ª quebra)
-                doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 295); // 2ª quebra + texto
-                doc.text('Criado em: ' + getFormattedDateTime(), marginLeft, 300); // Posição ajustada
+            // Adicionar instruções e link clicável
+            doc.textWithLink('Clique aqui para enviar por email: shi@sendflow.com.br (cópia para luiz@sendflow.pro)', 
+                           marginLeft, 285, 
+                           { url: emailLink, maxWidth: maxWidth });
+            
+            doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 290);
+            doc.text('Criado em: ' + getFormattedDateTime(), marginLeft, 295, { align: 'left' });
             
             return doc;
         }
