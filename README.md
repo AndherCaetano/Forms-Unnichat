@@ -330,7 +330,7 @@
         
         .footer a {
             color: #0066cc;
-            text-decoration: none;
+            text-decoration: underline;
             font-weight: 500;
         }
         
@@ -379,22 +379,6 @@
         .scroll-top i {
             font-size: 24px;
             transition: transform 0.3s ease;
-        }
-        
-        /* Campos desabilitados inicialmente */
-        .question input:not(#candidateName):not(#candidatePhone):not(#candidateEmail):not(#jobTitle),
-        .question textarea {
-            pointer-events: none;
-            opacity: 0.6;
-            background-color: var(--light-gray);
-        }
-        
-        /* Campos habilitados quando formulário estiver pronto */
-        .form-ready .question input,
-        .form-ready .question textarea {
-            pointer-events: auto;
-            opacity: 1;
-            background-color: var(--white);
         }
         
         /* ===== MEDIA QUERIES ===== */
@@ -650,6 +634,7 @@
                     <br><br>
                     <a href="mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro">Clique aqui para enviar por e-mail: shi@sendflow.com.br (com cópia para luiz@sendflow.pro)</a>
                 </div>
+                <br><br> <!-- Duas quebras de linha adicionadas -->
                 <button type="button" class="btn-clear" onclick="clearForm()">Limpar Formulário</button>
                 <p>Formulário gerado em: <span id="generatedDate"></span></p>
             </div>
@@ -670,6 +655,16 @@
         </div>
     </div>
 
+    <!-- Modal de informação inicial -->
+    <div id="infoModal" class="modal active">
+        <div class="modal-content">
+            <p><strong>Atenção!</strong></p>
+            <p>Por favor, preencha primeiro todas as informações na seção "Informações do Candidato" antes de responder às demais perguntas.</p>
+            <p>Os campos marcados com * são obrigatórios.</p>
+            <button class="modal-close" onclick="closeInfoModal()">Entendi</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -686,6 +681,10 @@
             document.getElementById('confirmationModal').classList.remove('active');
         }
         
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
+        }
+        
         // Função para limpar o formulário
         function clearForm() {
             if (confirm('Tem certeza que deseja limpar todo o formulário? Todos os dados serão perdidos.')) {
@@ -697,16 +696,6 @@
                     counter.textContent = `${maxLength} caracteres restantes`;
                     counter.classList.remove('warning', 'danger');
                 });
-                
-                // Desabilitar campos novamente
-                document.querySelectorAll('.question input:not(#candidateName):not(#candidatePhone):not(#candidateEmail):not(#jobTitle), .question textarea').forEach(field => {
-                    field.style.pointerEvents = 'none';
-                    field.style.opacity = '0.6';
-                    field.style.backgroundColor = 'var(--light-gray)';
-                });
-                
-                // Remover classe de formulário pronto
-                document.getElementById('candidateForm').classList.remove('form-ready');
                 
                 // Show confirmation
                 alert('Formulário limpo com sucesso!');
@@ -799,28 +788,6 @@
             
             return isValid;
         }
-        
-        // Habilitar campos quando informações básicas forem preenchidas
-        function checkBasicFields() {
-            const name = document.getElementById('candidateName').value.trim();
-            const phone = document.getElementById('candidatePhone').value.trim();
-            const email = document.getElementById('candidateEmail').value.trim();
-            const job = document.getElementById('jobTitle').value.trim();
-            
-            const allFilled = name && phone && email && job;
-            
-            if (allFilled) {
-                document.getElementById('candidateForm').classList.add('form-ready');
-            } else {
-                document.getElementById('candidateForm').classList.remove('form-ready');
-            }
-        }
-        
-        // Monitorar campos básicos
-        document.getElementById('candidateName').addEventListener('input', checkBasicFields);
-        document.getElementById('candidatePhone').addEventListener('input', checkBasicFields);
-        document.getElementById('candidateEmail').addEventListener('input', checkBasicFields);
-        document.getElementById('jobTitle').addEventListener('input', checkBasicFields);
         
         // Botão de scroll
         const scrollTopBtn = document.getElementById('scrollTop');
@@ -1005,10 +972,12 @@
             const jobTitle = document.getElementById('jobTitle').value;
             const emailLink = `mailto:shi@sendflow.com.br?cc=luiz@sendflow.pro&subject=Candidatura%20para%20${encodeURIComponent(jobTitle)}%20-%20${encodeURIComponent(candidateName)}&body=Por%20favor,%20anexe%20este%20PDF%20ao%20seu%20email.%0A%0AAtenciosamente,%0A${encodeURIComponent(candidateName)}`;
 
-            // Adicionar instruções e link clicável
+            // Adicionar instruções e link clicável (sublinhado)
+            doc.setTextColor(0, 0, 255);
             doc.textWithLink('Clique aqui para enviar por email: shi@sendflow.com.br (cópia para luiz@sendflow.pro)', 
                            marginLeft, 285, 
                            { url: emailLink, maxWidth: maxWidth });
+            doc.setTextColor(100, 100, 100);
             
             doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 290);
             doc.text('Criado em: ' + getFormattedDateTime(), marginLeft, 295, { align: 'left' });
