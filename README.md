@@ -736,23 +736,27 @@
             const marginRight = 15;
             const maxWidth = 180; // Largura máxima do texto (210 - margens)
             
-            let yPosition = 20; // Posição inicial mais alta para acomodar a logo
-            
-            // Adicionar logo no cabeçalho do PDF (a logo que você especificou)
-            const logoUrl = 'https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-29-as-20.26.52.png';
+            let yPosition = 10; // Posição inicial mais alta
+
+            // 1. Adicionar "Projeto B" no topo do PDF
+            doc.setFontSize(12);
+            doc.setTextColor(50, 50, 50); // Cor escura
+            doc.text("Projeto B", 105, yPosition, { align: 'left' });
+            yPosition += 8; // Espaçamento após o texto
+
+            // 2. Adicionar a logo
+            const logoUrl = 'https://gabriellemoreira.com.br/wp-content/uploads/2025/03/Captura-de-Tela-2025-03-29-as-10.26.42.png';
             try {
-                // Adiciona a logo com tratamento de erro
-                doc.addImage(logoUrl, 'PNG', marginLeft, 10, 40, 20); // Ajuste os valores de width (40) e height (20) conforme necessário
-                yPosition += 25; // Aumenta a posição Y para deixar espaço para a logo
+                doc.addImage(logoUrl, 'PNG', marginLeft, yPosition, 40, 20);
+                yPosition += 25;
             } catch (e) {
                 console.log('Erro ao carregar logo:', e);
-                // Texto alternativo se a logo não carregar
                 doc.setFontSize(12);
-                doc.text('Unnichat SendFlow', marginLeft, 15);
+                doc.text('Unnichat SendFlow', marginLeft, yPosition);
                 yPosition += 15;
             }
-            
-            // Adicionar título do formulário abaixo da logo
+
+            // 3. Adicionar título principal
             doc.setFontSize(18);
             doc.setTextColor(18, 140, 126);
             doc.text('Formulário de Questões Unnichat-SendFlow', 105, yPosition, { align: 'center' });
