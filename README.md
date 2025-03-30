@@ -741,7 +741,7 @@
             // 1. Adicionar "Projeto B" no topo do PDF
             doc.setFontSize(12);
             doc.setTextColor(50, 50, 50); // Cor escura
-            doc.text("Projeto B", 105, yPosition, { align: 'left' });
+            doc.text("Projeto B", marginLeft, yPosition); // Alinhado à esquerda
             yPosition += 8; // Espaçamento após o texto
 
             // 2. Adicionar a logo
