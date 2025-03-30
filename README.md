@@ -820,8 +820,8 @@
                         { id: 'p1b', text: 'b. O cliente pede que você execute uma ação para ele no sistema. O que você faz?' },
                         { id: 'p1c', text: 'c. Surgiu um problema na ferramenta que aparenta ser um bug de sistema e você ainda não aprendeu a como contornar essa situação. O que você faz?' },
                         { id: 'p1d', text: 'd. O Cliente acabou de assinar a ferramenta. Qual a sua conduta inicial?' },
-                        { id: 'p1e1', text: '1. Monte um Roteiro de atendimento para: Dúvida operacional da ferramenta' },
-                        { id: 'p1e2', text: '2. Monte um Roteiro de atendimento para: Suporte técnico' }
+                        { id: 'p1e1', text: '1. Monte um Roteiro de atendimento para: Dúvida operacional da ferramenta.' },
+                        { id: 'p1e2', text: '2. Monte um Roteiro de atendimento para: Suporte técnico.' }
                     ]
                 },
                 {
