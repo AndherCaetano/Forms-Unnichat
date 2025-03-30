@@ -493,13 +493,13 @@
                     </div>
                     
                     <div class="question">
-                        <label for="p1e1" class="required-field">1. Monte um Roteiro de atendimento para Dúvida operacional da ferramenta</label>
+                        <label for="p1e1" class="required-field">1. Monte um Roteiro de atendimento para: Dúvida operacional da ferramenta.</label>
                         <textarea id="p1e1" name="p1e1" required maxlength="5000"></textarea>
                         <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
                     
                     <div class="question">
-                        <label for="p1e2" class="required-field">2. Monte um Roteiro de atendimento para Suporte técnico</label>
+                        <label for="p1e2" class="required-field">2. Monte um Roteiro de atendimento para: Suporte técnico.</label>
                         <textarea id="p1e2" name="p1e2" required maxlength="5000"></textarea>
                         <div class="char-counter" data-maxlength="5000">5000 caracteres restantes</div>
                     </div>
@@ -888,7 +888,7 @@
                            { url: emailLink, maxWidth: maxWidth });
             
             doc.text('* Importante: Anexe o arquivo PDF ao enviar o email', marginLeft, 290);
-            doc.text('Enviado em: ' + getFormattedDateTime(), marginLeft, 295, { align: 'left' });
+            doc.text('Criado em: ' + getFormattedDateTime(), marginLeft, 295, { align: 'left' });
             
             return doc;
         }
