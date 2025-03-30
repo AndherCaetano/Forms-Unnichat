@@ -658,7 +658,7 @@
     <!-- Modal de informação inicial -->
     <div id="infoModal" class="modal active">
         <div class="modal-content">
-            <p><strong>Tudo bem??</strong></p>
+            <p><strong>Oi, tudo bem??</strong></p>
             <p>Preencha todas as informações na seção "Informações do Candidato" antes de prosseguir.</p>
             <p>*São obrigatórios.</p>
             <button class="modal-close" onclick="closeInfoModal()">Entendi</button>
