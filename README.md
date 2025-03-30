@@ -658,8 +658,8 @@
     <!-- Modal de informação inicial -->
     <div id="infoModal" class="modal active">
         <div class="modal-content">
-            <p><strong>Atenção!</strong></p>
-            <p>Por favor, preencha primeiro todas as informações na seção "Informações do Candidato" antes de responder às demais perguntas.</p>
+            <p><strong>Tudo bem??</strong></p>
+            <p>Preencha todas as informações na seção "Informações do Candidato" antes de prosseguir.</p>
             <p>Os campos marcados com * são obrigatórios.</p>
             <button class="modal-close" onclick="closeInfoModal()">Entendi</button>
         </div>
